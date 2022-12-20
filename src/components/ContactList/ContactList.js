@@ -1,32 +1,36 @@
-import css from './ContactList.module.css';
-import PropTypes from 'prop-types';
-
+import { Component } from 'react';
 import { ContactListItem } from 'components/ContactListItem/ContactListItem';
 import { Notification } from 'components/Notification/Notification';
+import css from './ContactList.module.css';
+import PropTypes from 'prop-types';
+export class ContactList extends Component {
+  render() {
+    const { contacts, onRemoveContact, filter } = this.props;
 
-export const ContactList = ({ contacts, onRemoveContact, filter }) => {
-  const filteredContacts = contacts.filter(contact =>
-    contact.name.toLowerCase().includes(filter.toLowerCase())
-  );
+    const filteredContacts = contacts.filter(contact =>
+      contact.name.toLowerCase().includes(filter.toLowerCase())
+    );
 
-  return (
-    <>
-      {contacts.length === 0 ? (
-        <Notification message="No contacts yet" />
-      ) : (
-        <ul className={css.list}>
-          {filteredContacts.map(({ id, name, number }) => (
-            <ContactListItem
-              key={id}
-              contact={{ id, name, number }}
-              onRemoveContact={onRemoveContact}
-            />
-          ))}
-        </ul>
-      )}
-    </>
-  );
-};
+    return (
+      <>
+        {contacts.length === 0 ? (
+          <Notification message="No contacts yet" />
+        ) : (
+          <ul className={css.list}>
+            {filteredContacts.map(({ id, name, number }) => (
+              <ContactListItem
+                contacts={contacts}
+                key={id}
+                contact={{ id, name, number }}
+                onRemoveContact={onRemoveContact}
+              />
+            ))}
+          </ul>
+        )}
+      </>
+    );
+  }
+}
 
 ContactList.propTypes = {
   contacts: PropTypes.arrayOf(

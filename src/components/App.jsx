@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import { nanoid } from 'nanoid';
-
 import { ContactForm } from './ContactForm/ContactForm';
 import { Filter } from './Filter/Filter';
 import { ContactList } from './ContactList/ContactList';
@@ -14,13 +13,20 @@ export class App extends Component {
     };
   }
 
-  onSubmit = event => {
+  componentDidMount() {
+    const contacts = localStorage.getItem('contacts');
+    const parsedContacts = JSON.parse(contacts);
+    if (parsedContacts) {
+      this.setState({ contacts: parsedContacts });
+    }
+  }
+
+  handleSubmit = event => {
     event.preventDefault();
 
     const form = event.target;
     const name = form.elements.name;
     const number = form.elements.number;
-
     const contact = {
       name: name.value,
       number: number.value,
@@ -45,23 +51,24 @@ export class App extends Component {
     }));
   };
 
-  onChange = event => {
+  onChangeFilter = event => {
     this.setState({ filter: event.target.value });
   };
 
   render() {
+    const { contacts, filter } = this.state;
     return (
       <>
         <h1>Phonebook ☎️</h1>
-        <ContactForm onSubmit={this.onSubmit} />
+        <ContactForm handleSubmit={this.handleSubmit} />
 
         <h2>Contacts</h2>
-        <Filter value={this.state.filter} onChange={this.onChange} />
+        <Filter value={filter} onChangeFilter={this.onChangeFilter} />
 
         <ContactList
-          contacts={this.state.contacts}
+          contacts={contacts}
           onRemoveContact={this.onRemoveContact}
-          filter={this.state.filter}
+          filter={filter}
         />
       </>
     );
