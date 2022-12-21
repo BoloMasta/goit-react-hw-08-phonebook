@@ -20,7 +20,6 @@ export class ContactListItem extends Component {
 
   render() {
     const { contact, onRemoveContact } = this.props;
-
     return (
       <li className={css.item}>
         <p className={css.text}>

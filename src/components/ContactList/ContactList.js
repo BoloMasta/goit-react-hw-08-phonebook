@@ -6,7 +6,6 @@ import PropTypes from 'prop-types';
 export class ContactList extends Component {
   render() {
     const { contacts, onRemoveContact, filter } = this.props;
-
     const filteredContacts = contacts.filter(contact =>
       contact.name.toLowerCase().includes(filter.toLowerCase())
     );

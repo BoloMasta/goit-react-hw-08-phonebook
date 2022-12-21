@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 export class ContactForm extends Component {
   render() {
     const { handleSubmit } = this.props;
-
     return (
       <form className={css.form} onSubmit={handleSubmit}>
         <label className={css.label}>

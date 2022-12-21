@@ -5,19 +5,15 @@ import { Filter } from './Filter/Filter';
 import { ContactList } from './ContactList/ContactList';
 
 export class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      contacts: [],
-      filter: '',
-    };
-  }
+  state = {
+    contacts: [],
+    filter: '',
+  };
 
   componentDidMount() {
     const contacts = localStorage.getItem('contacts');
-    const parsedContacts = JSON.parse(contacts);
-    if (parsedContacts) {
-      this.setState({ contacts: parsedContacts });
+    if (contacts) {
+      this.setState({ contacts: JSON.parse(contacts) });
     }
   }
 
@@ -25,8 +21,7 @@ export class App extends Component {
     event.preventDefault();
 
     const form = event.target;
-    const name = form.elements.name;
-    const number = form.elements.number;
+    const { name, number } = form.elements;
     const contact = {
       name: name.value,
       number: number.value,
