@@ -3,21 +3,6 @@ import css from './ContactListItem.module.css';
 import PropTypes from 'prop-types';
 
 export class ContactListItem extends Component {
-  componentDidMount() {
-    localStorage.setItem('contacts', JSON.stringify(this.props.contacts));
-  }
-
-  componentWillUnmount() {
-    localStorage.setItem(
-      'contacts',
-      JSON.stringify(
-        this.props.contacts.filter(
-          contact => contact.id !== this.props.contact.id
-        )
-      )
-    );
-  }
-
   render() {
     const { contact, onRemoveContact } = this.props;
     return (
@@ -39,13 +24,6 @@ export class ContactListItem extends Component {
 }
 
 ContactListItem.propTypes = {
-  contacts: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string,
-      name: PropTypes.string,
-      number: PropTypes.string,
-    })
-  ),
   contact: PropTypes.shape({
     id: PropTypes.string,
     name: PropTypes.string,

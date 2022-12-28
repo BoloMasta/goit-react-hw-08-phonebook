@@ -19,7 +19,6 @@ export class App extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-
     const form = event.target;
     const { name, number } = form.elements;
     const contact = {
@@ -36,7 +35,10 @@ export class App extends Component {
     this.setState(prevState => ({
       contacts: [...prevState.contacts, contact],
     }));
-
+    localStorage.setItem(
+      'contacts',
+      JSON.stringify([...this.state.contacts, contact])
+    );
     form.reset();
   };
 
@@ -44,6 +46,10 @@ export class App extends Component {
     this.setState(prevState => ({
       contacts: prevState.contacts.filter(contact => contact.id !== id),
     }));
+    localStorage.setItem(
+      'contacts',
+      JSON.stringify(this.state.contacts.filter(contact => contact.id !== id))
+    );
   };
 
   onChangeFilter = event => {
@@ -56,10 +62,8 @@ export class App extends Component {
       <>
         <h1>Phonebook ☎️</h1>
         <ContactForm handleSubmit={this.handleSubmit} />
-
         <h2>Contacts</h2>
         <Filter value={filter} onChangeFilter={this.onChangeFilter} />
-
         <ContactList
           contacts={contacts}
           onRemoveContact={this.onRemoveContact}

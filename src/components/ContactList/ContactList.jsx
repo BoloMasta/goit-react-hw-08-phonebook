@@ -3,6 +3,7 @@ import { ContactListItem } from 'components/ContactListItem/ContactListItem';
 import { Notification } from 'components/Notification/Notification';
 import css from './ContactList.module.css';
 import PropTypes from 'prop-types';
+
 export class ContactList extends Component {
   render() {
     const { contacts, onRemoveContact, filter } = this.props;
@@ -18,7 +19,6 @@ export class ContactList extends Component {
           <ul className={css.list}>
             {filteredContacts.map(({ id, name, number }) => (
               <ContactListItem
-                contacts={contacts}
                 key={id}
                 contact={{ id, name, number }}
                 onRemoveContact={onRemoveContact}
