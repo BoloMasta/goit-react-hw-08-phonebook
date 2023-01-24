@@ -1,21 +1,27 @@
+import { useDispatch } from 'react-redux';
+import { deleteContact } from '../../redux/actions';
 import css from './ContactListItem.module.css';
 import PropTypes from 'prop-types';
 
-const ContactListItem = ({ contact, onRemoveContact }) => (
-  <li className={css.item}>
-    <p className={css.text}>
-      {contact.name}: {contact.number}
-    </p>
+export const ContactListItem = ({ contact }) => {
+  const dispatch = useDispatch();
 
-    <button
-      className={css.button}
-      type="button"
-      onClick={() => onRemoveContact(contact.id)}
-    >
-      Delete
-    </button>
-  </li>
-);
+  const handleDelete = () => {
+    dispatch(deleteContact(contact.id));
+  };
+
+  return (
+    <li className={css.item}>
+      <p className={css.text}>
+        {contact.name}: {contact.number}
+      </p>
+
+      <button className={css.button} type="button" onClick={handleDelete}>
+        Delete
+      </button>
+    </li>
+  );
+};
 
 ContactListItem.propTypes = {
   contact: PropTypes.shape({
@@ -23,7 +29,4 @@ ContactListItem.propTypes = {
     name: PropTypes.string,
     number: PropTypes.string,
   }),
-  onRemoveContact: PropTypes.func,
 };
-
-export default ContactListItem;
