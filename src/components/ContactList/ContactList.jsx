@@ -6,7 +6,7 @@ import Notification from 'components/Notification/Notification';
 import css from './ContactList.module.css';
 
 const getFilteredContacts = (contacts, filter) => {
-  const normalizedFilter = filter.toLowerCase();
+  const normalizedFilter = filter?.toLowerCase();
   // console.log(normalizedFilter);
   return contacts.filter(contact => contact.name.toLowerCase().includes(normalizedFilter));
 };
