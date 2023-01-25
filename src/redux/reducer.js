@@ -1,4 +1,5 @@
 // import { combineReducers } from 'redux';
+import { addContact, deleteContact, setContatsFilter } from './actions';
 
 const contactsInitialState = {
   contacts: [
@@ -15,9 +16,9 @@ export const contactsReducer = (
   action
 ) => {
   switch (action.type) {
-    case 'contacts/addTask':
+    case addContact.type:
       return [...state, action.payload];
-    case 'contacts/deleteContact':
+    case deleteContact.type:
       return state.filter(contact => contact.id !== action.payload);
     default:
       return state;
@@ -30,7 +31,7 @@ const filterInitialState = {
 
 export const filterReducer = (state = filterInitialState, action) => {
   switch (action.type) {
-    case 'filters/setContatsFilter': {
+    case setContatsFilter.type: {
       return {
         ...state,
         value: action.payload,
