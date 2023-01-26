@@ -5,7 +5,7 @@ import css from './Filter.module.css';
 import clearIcon from '../../images/backspace.png';
 import { getContacts, getFilter } from 'redux/selectors';
 
-export const Filter = ({ value }) => {
+export const Filter = ({ inputValue }) => {
   const dispatch = useDispatch();
   const handleChangeFilter = event => {
     dispatch(setContatsFilter(event.target.value));
