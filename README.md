@@ -1,5 +1,5 @@
-### ⚛️ GOIT - React - Homework 4
+### ⚛️ GOIT - React - Homework 6
 
-React component: phonebook using localStorage and hooks<br> 
+React component phonebook using localStorage and redux.<br> 
 
-You can see it <a href="https://bolomasta.github.io/goit-react-hw-04-phonebook/">HERE</a>
+You can see it <a href="https://bolomasta.github.io/goit-react-hw-06-phonebook/">HERE</a>
