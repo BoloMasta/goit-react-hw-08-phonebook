@@ -45,8 +45,21 @@ const contactsSlice = createSlice({
       state.splice(0, state.length);
       localStorage.setItem('contacts', JSON.stringify(state));
     },
+
+    sortContacts: (state, action) => {
+      state.sort((a, b) => {
+        if (a.name < b.name) {
+          return -1;
+        }
+        if (a.name > b.name) {
+          return 1;
+        }
+        return 0;
+      });
+      localStorage.setItem('contacts', JSON.stringify(state));
+    },
   },
 });
 
-export const { addContact, deleteContact, deleteAllContacts } = contactsSlice.actions;
+export const { addContact, deleteContact, deleteAllContacts, sortContacts } = contactsSlice.actions;
 export const contactsReducer = contactsSlice.reducer;

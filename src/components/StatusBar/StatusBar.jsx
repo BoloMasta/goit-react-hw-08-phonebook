@@ -1,8 +1,9 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { getContacts } from '../../redux/selectors';
-import { deleteAllContacts } from '../../redux/contactsSlice';
+import { sortContacts, deleteAllContacts } from '../../redux/contactsSlice';
 import { Filter } from '../Filter/Filter';
 import css from './StatusBar.module.css';
+import sortIcon from '../../images/sort-az.png';
 import trashIcon from '../../images/trash.png';
 
 export const StatusBar = () => {
@@ -10,6 +11,9 @@ export const StatusBar = () => {
   const dispatch = useDispatch();
   const handleDeleteAllContacts = () => {
     dispatch(deleteAllContacts());
+  };
+  const handleSortAllContacts = () => {
+    dispatch(sortContacts());
   };
 
   return (
@@ -22,9 +26,14 @@ export const StatusBar = () => {
           </p>
         </div>
         {contacts.length > 0 && (
-          <button className={css.button} type="button" onClick={handleDeleteAllContacts}>
-            <img src={trashIcon} alt="trash icon" className={css.icon} />
-          </button>
+          <div className={css.buttons}>
+            <button className={css.button_sort} type="button" onClick={handleSortAllContacts}>
+              <img src={sortIcon} alt="sort icon" className={css.icon} />
+            </button>
+            <button className={css.button_delete} type="button" onClick={handleDeleteAllContacts}>
+              <img src={trashIcon} alt="trash icon" className={css.icon} />
+            </button>
+          </div>
         )}
       </div>
       <Filter />
