@@ -3,7 +3,18 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 10px;
+  border-radius: 8px;
+}
+
+.item:hover {
+  background: linear-gradient(
+    90deg,
+    rgba(240, 240, 240, 0.9) 0%,
+    rgba(0, 212, 255, 0.2) 10%,
+    rgba(45, 45, 206, 0.5) 50%,
+    rgba(0, 212, 255, 0.2) 90%,
+    rgba(240, 240, 240, 0.9) 100%
+  );
 }
 
 .icon {
@@ -13,16 +24,18 @@
 
 .text {
   display: inline-block;
-  margin-left: 10px;
   border: none;
   outline: none;
   font-size: 18px;
+  margin: 0;
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .button {
   display: inline-block;
-  margin-left: 30px;
-  background-color: #000;
+  background-color: rgb(150, 150, 150);
   color: #fff;
   cursor: pointer;
   border: none;
@@ -33,5 +46,5 @@
 }
 
 .button:hover {
-  background-color: #333;
+  background-color: black;
 }

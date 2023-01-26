@@ -11,3 +11,7 @@
 .list:hover {
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
 }
+
+.list li:not(:last-child) {
+  margin-bottom: 10px;
+}

@@ -1,10 +1,17 @@
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { getContacts } from '../../redux/selectors';
+import { deleteAllContacts } from '../../redux/contactsSlice';
 import { Filter } from '../Filter/Filter';
 import css from './StatusBar.module.css';
 import trashIcon from '../../images/trash.png';
 
 export const StatusBar = () => {
+  const dispatch = useDispatch();
+
+  const handleDeleteAllContacts = () => {
+    dispatch(deleteAllContacts());
+  };
+
   const contacts = useSelector(getContacts);
   return (
     <div className={css.StatusBar}>
@@ -15,7 +22,7 @@ export const StatusBar = () => {
             {contacts.length} {contacts.length === 1 ? 'contact' : 'contacts'}
           </p>
         </div>
-        <button className={css.button} type="button">
+        <button className={css.button} type="button" onClick={handleDeleteAllContacts}>
           <img src={trashIcon} alt="trash icon" className={css.icon} />
         </button>
       </div>
