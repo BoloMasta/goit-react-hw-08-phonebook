@@ -1,5 +1,5 @@
-import css from './ContactForm.module.css';
 import PropTypes from 'prop-types';
+import css from './ContactForm.module.css';
 
 export const ContactForm = ({ handleSubmit }) => (
   <form className={css.form} onSubmit={handleSubmit}>

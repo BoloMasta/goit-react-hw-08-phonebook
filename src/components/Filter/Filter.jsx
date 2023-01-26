@@ -7,12 +7,9 @@ import { getContacts, getFilter } from 'redux/selectors';
 
 export const Filter = ({ value }) => {
   const dispatch = useDispatch();
-
   const handleChangeFilter = event => {
     dispatch(setContatsFilter(event.target.value));
   };
-
-  console.log(useSelector(getFilter));
 
   return (
     <label className={css.label}>

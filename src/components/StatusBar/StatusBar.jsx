@@ -6,13 +6,12 @@ import css from './StatusBar.module.css';
 import trashIcon from '../../images/trash.png';
 
 export const StatusBar = () => {
+  const contacts = useSelector(getContacts);
   const dispatch = useDispatch();
-
   const handleDeleteAllContacts = () => {
     dispatch(deleteAllContacts());
   };
 
-  const contacts = useSelector(getContacts);
   return (
     <div className={css.StatusBar}>
       <div className={css.infoSection}>
@@ -28,7 +27,6 @@ export const StatusBar = () => {
           </button>
         )}
       </div>
-
       <Filter />
     </div>
   );

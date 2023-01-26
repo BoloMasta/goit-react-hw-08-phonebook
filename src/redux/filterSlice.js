@@ -21,5 +21,4 @@ const filterSlice = createSlice({
 });
 
 export const { setContatsFilter } = filterSlice.actions;
-
 export const filterReducer = filterSlice.reducer;
