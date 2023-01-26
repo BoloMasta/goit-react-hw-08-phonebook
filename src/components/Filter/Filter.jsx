@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
-import { setContatsFilter } from '../../redux/filterSlice';
+import { setContactsFilter } from '../../redux/filterSlice';
 import css from './Filter.module.css';
 import clearIcon from '../../images/backspace.png';
 import { getContacts, getFilter } from 'redux/selectors';
@@ -8,7 +8,7 @@ import { getContacts, getFilter } from 'redux/selectors';
 export const Filter = ({ inputValue }) => {
   const dispatch = useDispatch();
   const handleChangeFilter = event => {
-    dispatch(setContatsFilter(event.target.value));
+    dispatch(setContactsFilter(event.target.value));
   };
 
   return (
@@ -23,7 +23,11 @@ export const Filter = ({ inputValue }) => {
         disabled={useSelector(getContacts).length === 0}
       />
       {useSelector(getFilter) && (
-        <button className={css.button} type="button" onClick={() => dispatch(setContatsFilter(''))}>
+        <button
+          className={css.button}
+          type="button"
+          onClick={() => dispatch(setContactsFilter(''))}
+        >
           <img src={clearIcon} alt="clear icon" className={css.icon} />
         </button>
       )}
