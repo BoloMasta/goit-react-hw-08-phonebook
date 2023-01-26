@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { addContact } from '../redux/contactsSlice';
-import ContactForm from './ContactForm/ContactForm';
-import { Filter } from './Filter/Filter';
+import { ContactForm } from './ContactForm/ContactForm';
+import { StatusBar } from './StatusBar/StatusBar';
 import { ContactList } from './ContactList/ContactList';
 
 const App = () => {
@@ -54,10 +54,9 @@ const App = () => {
 
   return (
     <>
-      <h1>Phonebook ☎️</h1>
+      <h1>Redux Phonebook ☎️</h1>
       <ContactForm handleSubmit={handleSubmit} />
-      <h2>Contacts</h2>
-      <Filter value={filter} onChangeFilter={onChangeFilter} />
+      <StatusBar />
       <ContactList contacts={contacts} filter={filter} />
     </>
   );

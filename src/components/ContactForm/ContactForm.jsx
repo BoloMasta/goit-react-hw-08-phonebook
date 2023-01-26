@@ -1,7 +1,7 @@
 import css from './ContactForm.module.css';
 import PropTypes from 'prop-types';
 
-const ContactForm = ({ handleSubmit }) => (
+export const ContactForm = ({ handleSubmit }) => (
   <form className={css.form} onSubmit={handleSubmit}>
     <label className={css.label}>
       Name
@@ -34,5 +34,3 @@ const ContactForm = ({ handleSubmit }) => (
 ContactForm.propTypes = {
   handleSubmit: PropTypes.func,
 };
-
-export default ContactForm;

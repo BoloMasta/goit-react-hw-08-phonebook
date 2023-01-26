@@ -12,7 +12,7 @@ export const Filter = ({ value }) => {
 
   return (
     <label className={css.label}>
-      Find contacts by name
+      Find contact by name:
       <input className={css.input} type="text" name="filter" onChange={handleChangeFilter} />
     </label>
   );
