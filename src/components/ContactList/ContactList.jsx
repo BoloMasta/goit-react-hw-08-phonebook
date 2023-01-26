@@ -7,7 +7,6 @@ import css from './ContactList.module.css';
 
 const getFilteredContacts = (contacts, filter) => {
   const normalizedFilter = filter?.toLowerCase();
-  // console.log(normalizedFilter);
   return contacts.filter(contact => contact.name.toLowerCase().includes(normalizedFilter));
 };
 
@@ -15,13 +14,6 @@ export const ContactList = () => {
   const contacts = useSelector(getContacts);
   const filter = useSelector(getFilter);
   const filteredContacts = getFilteredContacts(contacts, filter);
-  console.log(contacts);
-  console.log(filter);
-  console.log(filteredContacts);
-
-  // const filteredContacts = contacts.filter(contact =>
-  //   contact.name.toLowerCase().includes(filter.toLowerCase())
-  // );
 
   return (
     <>
