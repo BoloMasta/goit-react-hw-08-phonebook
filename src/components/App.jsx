@@ -4,6 +4,7 @@ import { addContact } from '../redux/contactsSlice';
 import { ContactForm } from './ContactForm/ContactForm';
 import { StatusBar } from './StatusBar/StatusBar';
 import { ContactList } from './ContactList/ContactList';
+import phonebookIcon from '../images/phonebook.png';
 
 const App = () => {
   const [contacts, setContacts] = useState([]);
@@ -54,7 +55,17 @@ const App = () => {
 
   return (
     <>
-      <h1>Redux Phonebook ☎️</h1>
+      <h1>
+        <span>
+          <img
+            src={phonebookIcon}
+            width="40"
+            height="40"
+            style={{ position: 'relative', top: 7 }}
+          />
+        </span>
+        &nbsp; Redux Phonebook
+      </h1>
       <ContactForm handleSubmit={handleSubmit} />
       <StatusBar />
       <ContactList contacts={contacts} filter={filter} />

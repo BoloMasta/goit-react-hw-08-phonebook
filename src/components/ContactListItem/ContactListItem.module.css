@@ -1,13 +1,14 @@
 .item {
   height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
 }
 
-.item::marker {
-  content: '🔸';
-}
-
-.item:nth-child(2n)::marker {
-  content: '🔹';
+.icon {
+  width: 30px;
+  height: 30px;
 }
 
 .text {
@@ -15,6 +16,7 @@
   margin-left: 10px;
   border: none;
   outline: none;
+  font-size: 18px;
 }
 
 .button {

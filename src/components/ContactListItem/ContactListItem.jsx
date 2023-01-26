@@ -1,7 +1,8 @@
 import { useDispatch } from 'react-redux';
 import { deleteContact } from '../../redux/contactsSlice';
-import css from './ContactListItem.module.css';
 import PropTypes from 'prop-types';
+import css from './ContactListItem.module.css';
+import userIcon from '../../images/user.png';
 
 export const ContactListItem = ({ contact }) => {
   const dispatch = useDispatch();
@@ -12,6 +13,7 @@ export const ContactListItem = ({ contact }) => {
 
   return (
     <li className={css.item}>
+      <img src={userIcon} alt="user icon" className={css.icon} />
       <p className={css.text}>
         {contact.name}: {contact.number}
       </p>
