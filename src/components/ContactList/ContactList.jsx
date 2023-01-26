@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getContacts, getFilter } from '../../redux/selectors';
 import { ContactListItem } from 'components/ContactListItem/ContactListItem';
-import Notification from 'components/Notification/Notification';
+import { Notification } from 'components/Notification/Notification';
 import css from './ContactList.module.css';
 
 const getFilteredContacts = (contacts, filter) => {

@@ -22,9 +22,11 @@ export const StatusBar = () => {
             {contacts.length} {contacts.length === 1 ? 'contact' : 'contacts'}
           </p>
         </div>
-        <button className={css.button} type="button" onClick={handleDeleteAllContacts}>
-          <img src={trashIcon} alt="trash icon" className={css.icon} />
-        </button>
+        {contacts.length > 0 && (
+          <button className={css.button} type="button" onClick={handleDeleteAllContacts}>
+            <img src={trashIcon} alt="trash icon" className={css.icon} />
+          </button>
+        )}
       </div>
 
       <Filter />

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { setContatsFilter } from '../../redux/filterSlice';
 import css from './Filter.module.css';
 import clearIcon from '../../images/backspace.png';
-import { getFilter } from 'redux/selectors';
+import { getContacts, getFilter } from 'redux/selectors';
 
 export const Filter = ({ value }) => {
   const dispatch = useDispatch();
@@ -23,6 +23,7 @@ export const Filter = ({ value }) => {
         name="filter"
         onChange={handleChangeFilter}
         value={useSelector(getFilter)}
+        disabled={useSelector(getContacts).length === 0}
       />
       {useSelector(getFilter) && (
         <button className={css.button} type="button" onClick={() => dispatch(setContatsFilter(''))}>

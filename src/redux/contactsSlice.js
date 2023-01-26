@@ -1,11 +1,12 @@
 import { createSlice, nanoid } from '@reduxjs/toolkit';
 
 const contactsInitialState = [
-  { id: '0', name: 'John', number: '1111111111' },
-  { id: '1', name: 'Bob', number: '2222222222' },
-  { id: '2', name: 'Mary', number: '3333333333' },
-  { id: '3', name: 'Kate', number: '4444444444' },
-  { id: '4', name: 'Ann', number: '5555555555' },
+  { id: '0', name: 'John', number: '11111' },
+  { id: '1', name: 'Bob', number: '222 222 222' },
+  { id: '2', name: 'Mary', number: '333-333-333' },
+  { id: '3', name: 'Kate', number: '444_444_444' },
+  { id: '4', name: 'Ann', number: '+55-555-555-555' },
+  { id: '5', name: 'Joseph', number: '(66) 666-666-666' },
 ];
 
 const contactsSlice = createSlice({
