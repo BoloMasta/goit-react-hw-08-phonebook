@@ -12,7 +12,7 @@ export const StatusBar = () => {
   const handleDeleteAllContacts = () => {
     dispatch(deleteAllContacts());
   };
-  const handleSortAllContacts = () => {
+  const handleSortContacts = () => {
     dispatch(sortContacts());
   };
 
@@ -27,7 +27,7 @@ export const StatusBar = () => {
         </div>
         {contacts.length > 0 && (
           <div className={css.buttons}>
-            <button className={css.button_sort} type="button" onClick={handleSortAllContacts}>
+            <button className={css.button_sort} type="button" onClick={handleSortContacts}>
               <img src={sortIcon} alt="sort icon" className={css.icon} />
             </button>
             <button className={css.button_delete} type="button" onClick={handleDeleteAllContacts}>

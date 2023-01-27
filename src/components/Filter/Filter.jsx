@@ -1,12 +1,12 @@
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { setContactsFilter } from '../../redux/filterSlice';
-import css from './Filter.module.css';
-import clearIcon from '../../images/backspace.png';
 import { getContacts } from '../../redux/contactsSlice';
 import { getFilter } from '../../redux/filterSlice';
+import css from './Filter.module.css';
+import clearIcon from '../../images/backspace.png';
 
-export const Filter = ({ inputValue }) => {
+export const Filter = () => {
   const dispatch = useDispatch();
   const handleChangeFilter = event => {
     dispatch(setContactsFilter(event.target.value));
@@ -37,5 +37,5 @@ export const Filter = ({ inputValue }) => {
 };
 
 Filter.propTypes = {
-  value: PropTypes.string,
+  inputValue: PropTypes.string,
 };

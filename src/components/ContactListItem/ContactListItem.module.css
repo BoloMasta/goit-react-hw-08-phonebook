@@ -41,9 +41,10 @@
   outline: none;
   font-size: 18px;
   margin: 0;
-  max-width: 240px;
+  max-width: 275px;
   overflow: hidden;
   text-overflow: ellipsis;
+  text-align: center;
 }
 
 .button {

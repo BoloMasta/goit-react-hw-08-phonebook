@@ -1,5 +1,4 @@
 import { useSelector } from 'react-redux';
-import PropTypes from 'prop-types';
 import { getContacts } from '../../redux/contactsSlice';
 import { getFilter } from '../../redux/filterSlice';
 import { ContactListItem } from 'components/ContactListItem/ContactListItem';
@@ -29,16 +28,4 @@ export const ContactList = () => {
       )}
     </>
   );
-};
-
-ContactList.propTypes = {
-  contacts: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string,
-      name: PropTypes.string,
-      number: PropTypes.string,
-    })
-  ),
-  onRemoveContact: PropTypes.func,
-  filter: PropTypes.string,
 };

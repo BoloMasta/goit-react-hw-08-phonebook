@@ -20,7 +20,9 @@ const contactsSlice = createSlice({
   reducers: {
     addContact: {
       reducer: (state, action) => {
-        const isContactExist = state.find(contact => contact.name === action.payload.name);
+        const isContactExist = state.find(
+          contact => contact.name.toLowerCase() === action.payload.name.toLowerCase()
+        );
         const isNumberExist = state.find(contact => contact.number === action.payload.number);
         if (isContactExist) {
           alert(`User with name ${action.payload.name} is already in contacts`);

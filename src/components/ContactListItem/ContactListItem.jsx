@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
-import { deleteContact } from '../../redux/contactsSlice';
 import PropTypes from 'prop-types';
+import { deleteContact } from '../../redux/contactsSlice';
 import css from './ContactListItem.module.css';
 import userIcon from '../../images/user.png';
 import telephoneIcon from '../../images/telephone.png';
