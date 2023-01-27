@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { getContacts } from '../../redux/selectors';
+import { getContacts } from '../../redux/contactsSlice';
 import { sortContacts, deleteAllContacts } from '../../redux/contactsSlice';
 import { Filter } from '../Filter/Filter';
 import css from './StatusBar.module.css';

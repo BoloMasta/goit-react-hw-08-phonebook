@@ -1,6 +1,6 @@
 // import { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { addContact } from '../redux/contactsSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { addContact, getContacts } from '../redux/contactsSlice';
 import { ContactForm } from './ContactForm/ContactForm';
 import { StatusBar } from './StatusBar/StatusBar';
 import { ContactList } from './ContactList/ContactList';
@@ -12,6 +12,7 @@ const App = () => {
   const handleSubmit = event => {
     event.preventDefault();
     const form = event.target;
+
     dispatch(addContact(form.elements.name.value, form.elements.number.value));
     form.reset();
   };

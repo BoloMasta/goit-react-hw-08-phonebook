@@ -17,9 +17,22 @@
   );
 }
 
-.icon {
+.user_icon {
   width: 30px;
   height: 30px;
+}
+
+.telephone_icon {
+  width: 20px;
+  height: 20px;
+  margin-left: 10px;
+  position: relative;
+  top: 2px;
+  opacity: 0.5;
+}
+
+.telephone_icon:hover {
+  opacity: 1;
 }
 
 .text {

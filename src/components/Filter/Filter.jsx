@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import { setContactsFilter } from '../../redux/filterSlice';
 import css from './Filter.module.css';
 import clearIcon from '../../images/backspace.png';
-import { getContacts, getFilter } from 'redux/selectors';
+import { getContacts } from '../../redux/contactsSlice';
+import { getFilter } from '../../redux/filterSlice';
 
 export const Filter = ({ inputValue }) => {
   const dispatch = useDispatch();

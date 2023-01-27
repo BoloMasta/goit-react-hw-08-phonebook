@@ -20,6 +20,17 @@ const contactsSlice = createSlice({
   reducers: {
     addContact: {
       reducer: (state, action) => {
+        const isContactExist = state.find(contact => contact.name === action.payload.name);
+        const isNumberExist = state.find(contact => contact.number === action.payload.number);
+        if (isContactExist) {
+          alert(`User with name ${action.payload.name} is already in contacts`);
+          return;
+        }
+        if (isNumberExist) {
+          alert(`Number ${action.payload.number} is already in contacts`);
+          return;
+        }
+
         state.push(action.payload);
         localStorage.setItem('contacts', JSON.stringify(state));
       },
@@ -41,25 +52,18 @@ const contactsSlice = createSlice({
       localStorage.setItem('contacts', JSON.stringify(state));
     },
 
-    deleteAllContacts: (state, action) => {
+    deleteAllContacts: state => {
       state.splice(0, state.length);
       localStorage.setItem('contacts', JSON.stringify(state));
     },
 
-    sortContacts: (state, action) => {
-      state.sort((a, b) => {
-        if (a.name < b.name) {
-          return -1;
-        }
-        if (a.name > b.name) {
-          return 1;
-        }
-        return 0;
-      });
+    sortContacts: state => {
+      state.sort((a, b) => a.name.localeCompare(b.name));
       localStorage.setItem('contacts', JSON.stringify(state));
     },
   },
 });
 
+export const getContacts = state => state.contacts;
 export const { addContact, deleteContact, deleteAllContacts, sortContacts } = contactsSlice.actions;
 export const contactsReducer = contactsSlice.reducer;
