@@ -1,8 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { setContactsFilter } from '../../redux/filterSlice';
-import { getContacts } from '../../redux/contactsSlice';
-import { getFilter } from '../../redux/filterSlice';
+import { getContacts, getFilter } from 'redux/selectors';
 import css from './Filter.module.css';
 import clearIcon from '../../images/backspace.png';
 
