@@ -6,7 +6,10 @@ import css from './ContactList.module.css';
 
 const getFilteredContacts = (contacts, filter) => {
   const normalizedFilter = filter.toLowerCase();
-  return contacts.filter(contact => contact.name.toLowerCase().includes(normalizedFilter));
+  // return '1223';
+  return Object.values(contacts).filter(contact =>
+    contact.name?.toLowerCase().includes(normalizedFilter)
+  );
 };
 
 export const ContactList = () => {
