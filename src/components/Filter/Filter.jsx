@@ -7,6 +7,7 @@ import clearIcon from '../../images/backspace.png';
 
 export const Filter = () => {
   const dispatch = useDispatch();
+
   const handleChangeFilter = event => {
     dispatch(setContactsFilter(event.target.value));
   };

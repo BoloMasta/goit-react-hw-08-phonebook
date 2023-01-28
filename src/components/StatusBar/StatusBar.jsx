@@ -9,6 +9,7 @@ import trashIcon from '../../images/trash.png';
 export const StatusBar = () => {
   const contacts = useSelector(getContacts);
   const dispatch = useDispatch();
+
   const handleDeleteAllContacts = () => {
     dispatch(deleteAllContacts());
   };

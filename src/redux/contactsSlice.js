@@ -9,14 +9,14 @@ const exampleContactsList = [
   { id: '5', name: 'Joseph', number: '(66) 666-666-666' },
 ];
 
-const contactsInitialState =
+const initialState =
   localStorage.getItem('contacts') !== null
     ? JSON.parse(localStorage.getItem('contacts'))
     : exampleContactsList;
 
 const contactsSlice = createSlice({
   name: 'contacts',
-  initialState: contactsInitialState,
+  initialState: initialState,
   reducers: {
     addContact: {
       reducer: (state, action) => {
