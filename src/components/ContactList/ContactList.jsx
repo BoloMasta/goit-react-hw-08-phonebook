@@ -6,10 +6,7 @@ import css from './ContactList.module.css';
 
 const getFilteredContacts = (contacts, filter) => {
   const normalizedFilter = filter.toLowerCase();
-  // return '1223';
-  return Object.values(contacts).filter(contact =>
-    contact.name?.toLowerCase().includes(normalizedFilter)
-  );
+  return contacts.filter(contact => contact.name.toLowerCase().includes(normalizedFilter));
 };
 
 export const ContactList = () => {
@@ -19,8 +16,10 @@ export const ContactList = () => {
 
   return (
     <>
-      {filteredContacts.length === 0 ? (
+      {contacts.length === 0 ? (
         <Notification message="No contacts yet" />
+      ) : filter !== '' && filteredContacts.length === 0 ? (
+        <Notification message="No contacts found" />
       ) : (
         <ul className={css.list}>
           {filteredContacts.map(({ id, name, number }) => (
