@@ -61,7 +61,6 @@ const contactsSlice = createSlice({
 
     sortContacts: state => {
       state.sort((a, b) => a.name.localeCompare(b.name));
-      localStorage.setItem('contacts', JSON.stringify(state));
     },
   },
 });

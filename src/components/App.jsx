@@ -1,9 +1,9 @@
 import { useDispatch } from 'react-redux';
 import { addContact } from '../redux/contactsSlice';
+import { Header } from './Header/Header';
 import { ContactForm } from './ContactForm/ContactForm';
 import { StatusBar } from './StatusBar/StatusBar';
 import { ContactList } from './ContactList/ContactList';
-import phonebookIcon from '../images/phonebook.png';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -17,18 +17,7 @@ const App = () => {
 
   return (
     <>
-      <h1>
-        <span>
-          <img
-            src={phonebookIcon}
-            alt="phonebook icon"
-            width="40"
-            height="40"
-            style={{ position: 'relative', top: 7 }}
-          />
-        </span>
-        &nbsp; Redux Phonebook
-      </h1>
+      <Header />
       <ContactForm handleSubmit={handleSubmit} />
       <StatusBar />
       <ContactList />
