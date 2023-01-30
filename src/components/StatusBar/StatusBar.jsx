@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { getContacts } from 'redux/selectors';
-import { sortContacts, deleteAllContacts } from '../../redux/contactsSlice';
+// import { sortContacts, deleteAllContacts } from '../../redux/contactsSlice';
+import { deleteAllContacts } from 'redux/operations';
 import { Filter } from '../Filter/Filter';
 import css from './StatusBar.module.css';
 import sortIcon from '../../images/sort-az.png';
@@ -14,7 +15,7 @@ export const StatusBar = () => {
     dispatch(deleteAllContacts());
   };
   const handleSortContacts = () => {
-    dispatch(sortContacts());
+    //dispatch(sortContacts());
   };
 
   return (
