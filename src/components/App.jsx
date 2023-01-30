@@ -1,5 +1,8 @@
-import { useDispatch } from 'react-redux';
-import { addContact } from '../redux/contactsSlice';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { addContact } from '../redux/operations';
+import { fetchContacts } from '../redux/operations';
+import { getContacts } from 'redux/selectors';
 import { Header } from './Header/Header';
 import { ContactForm } from './ContactForm/ContactForm';
 import { StatusBar } from './StatusBar/StatusBar';
@@ -7,6 +10,12 @@ import { ContactList } from './ContactList/ContactList';
 
 const App = () => {
   const dispatch = useDispatch();
+
+  const { items, isLoading, error } = useSelector(getContacts);
+
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch]);
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -20,6 +29,9 @@ const App = () => {
       <Header />
       <ContactForm handleSubmit={handleSubmit} />
       <StatusBar />
+      {error && <p>{error}</p>}
+      {isLoading && <p>Loading tasks...</p>}
+      {items?.length > 0 && <ContactList />}
       <ContactList />
     </>
   );
