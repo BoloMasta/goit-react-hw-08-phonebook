@@ -12,7 +12,7 @@ export const ContactListItem = ({ contact }) => {
     dispatch(deleteContact(contact.id));
   };
 
-  console.log(contact);
+  // console.log(contact);
 
   return (
     <li className={css.item}>
