@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from '../redux/operations';
+// import { addContact } from '../redux/operations';
 import { fetchContacts } from '../redux/operations';
 import { getContacts } from 'redux/selectors';
 import { Header } from './Header/Header';
@@ -17,17 +17,17 @@ const App = () => {
     dispatch(fetchContacts());
   }, [dispatch]);
 
-  const handleSubmit = event => {
-    event.preventDefault();
-    const form = event.target;
-    dispatch(addContact(form.elements.name.value, form.elements.number.value));
-    form.reset();
-  };
+  // const handleSubmit = event => {
+  //   event.preventDefault();
+  //   const form = event.target;
+  //   dispatch(addContact(form.elements.name.value, form.elements.number.value));
+  //   form.reset();
+  // };
 
   return (
     <>
       <Header />
-      <ContactForm handleSubmit={handleSubmit} />
+      <ContactForm />
       <StatusBar />
       {error && <p>{error}</p>}
       {isLoading && <p>Loading tasks...</p>}
