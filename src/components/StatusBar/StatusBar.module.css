@@ -51,7 +51,7 @@
 }
 
 .button_sort::before {
-  content: 'Sort contacts alphabetical?';
+  content: 'Sort contacts?';
   display: none;
   width: 150px;
   height: 50px;

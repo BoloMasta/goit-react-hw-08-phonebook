@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 //import { useSelector } from 'react-redux';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectSortedAlphabetically } from './selectors';
+// import { useDispatch, useSelector } from 'react-redux';
+// import { selectSortedAlphabetically } from './selectors';
 import { fetchContacts, addContact, deleteContact } from './operations';
 
 const initialState = [];
@@ -85,7 +85,7 @@ const contactsSlice = createSlice({
       });
     },
 
-    sortContactsNotAlphabetically: state => {
+    sortContactsReverseAlphabetically: state => {
       state.items.sort((a, b) => {
         return b.name.localeCompare(a.name);
       });
@@ -118,6 +118,6 @@ const contactsSlice = createSlice({
   },
 });
 
-export const { deleteAllContacts, sortContactsAlphabetically, sortContactsNotAlphabetically } =
+export const { deleteAllContacts, sortContactsAlphabetically, sortContactsReverseAlphabetically } =
   contactsSlice.actions;
 export const contactsReducer = contactsSlice.reducer;

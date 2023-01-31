@@ -3,13 +3,13 @@ import { selectContacts, selectSortedAlphabetically } from 'redux/selectors';
 import {
   deleteAllContacts,
   sortContactsAlphabetically,
-  sortContactsNotAlphabetically,
+  sortContactsReverseAlphabetically,
 } from '../../redux/contactsSlice';
 //import { deleteAllContacts } from 'redux/operations';
 import { setSortedAlphabetically } from 'redux/filterSlice';
 import { Filter } from '../Filter/Filter';
 import css from './StatusBar.module.css';
-import sortIcon from '../../images/sort-az.png';
+import sortIcon from '../../images/sort.png';
 import trashIcon from '../../images/trash.png';
 
 export const StatusBar = () => {
@@ -21,12 +21,10 @@ export const StatusBar = () => {
     dispatch(deleteAllContacts());
   };
   const handleSortContacts = () => {
-    if (sortedAlphabetically) {
-      dispatch(sortContactsNotAlphabetically());
-    } else {
-      dispatch(sortContactsAlphabetically());
-    }
     dispatch(setSortedAlphabetically(!sortedAlphabetically));
+    sortedAlphabetically
+      ? dispatch(sortContactsReverseAlphabetically())
+      : dispatch(sortContactsAlphabetically());
   };
 
   return (
