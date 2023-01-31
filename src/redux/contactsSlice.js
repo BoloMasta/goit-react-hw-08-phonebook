@@ -1,5 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchContacts, addContact, deleteContact, deleteAllContacts } from './operations';
+//import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectSortedAlphabetically } from './selectors';
+import { fetchContacts, addContact, deleteContact } from './operations';
 
 const initialState = [];
 //   { id: '0', name: 'John', number: '11111' },
@@ -22,64 +25,72 @@ const handleRejected = (state, action) => {
 const contactsSlice = createSlice({
   name: 'contacts',
   initialState: { items: initialState, isLoading: false, error: null },
-  // reducers: {
-  //   fetchingInProgress(state) {
-  //     state.isLoading = true;
-  //   },
-  //   fetchingSuccess(state, action) {
-  //     state.isLoading = false;
-  //     state.error = null;
-  //     state.items = action.payload;
-  //   },
-  //   fetchingError(state, action) {
-  //     state.isLoading = false;
-  //     state.error = action.payload;
-  //   },
+  reducers: {
+    //   fetchingInProgress(state) {
+    //     state.isLoading = true;
+    //   },
+    //   fetchingSuccess(state, action) {
+    //     state.isLoading = false;
+    //     state.error = null;
+    //     state.items = action.payload;
+    //   },
+    //   fetchingError(state, action) {
+    //     state.isLoading = false;
+    //     state.error = action.payload;
+    //   },
 
-  //   addContact: {
-  //     reducer: (state, action) => {
-  //       const isContactExist = state.find(
-  //         contact => contact.name.toLowerCase() === action.payload.name.toLowerCase()
-  //       );
-  //       if (isContactExist) {
-  //         alert(`User with name ${action.payload.name} is already in contacts`);
-  //         return;
-  //       }
-  //       const isNumberExist = state.find(
-  //         contact => contact.number.replace(/\D/g, '') === action.payload.number.replace(/\D/g, '')
-  //       );
-  //       if (isNumberExist) {
-  //         alert(`Number ${action.payload.number} is already in contacts`);
-  //         return;
-  //       }
+    //   addContact: {
+    //     reducer: (state, action) => {
+    //       const isContactExist = state.find(
+    //         contact => contact.name.toLowerCase() === action.payload.name.toLowerCase()
+    //       );
+    //       if (isContactExist) {
+    //         alert(`User with name ${action.payload.name} is already in contacts`);
+    //         return;
+    //       }
+    //       const isNumberExist = state.find(
+    //         contact => contact.number.replace(/\D/g, '') === action.payload.number.replace(/\D/g, '')
+    //       );
+    //       if (isNumberExist) {
+    //         alert(`Number ${action.payload.number} is already in contacts`);
+    //         return;
+    //       }
 
-  //       state.push(action.payload);
-  //     },
+    //       state.push(action.payload);
+    //     },
 
-  //     prepare: (name, number) => {
-  //       return {
-  //         payload: {
-  //           id: nanoid(),
-  //           name,
-  //           number,
-  //         },
-  //       };
-  //     },
-  //   },
+    //     prepare: (name, number) => {
+    //       return {
+    //         payload: {
+    //           id: nanoid(),
+    //           name,
+    //           number,
+    //         },
+    //       };
+    //     },
+    //   },
 
-  //   deleteContact: (state, action) => {
-  //     const index = state.findIndex(contact => contact.id === action.payload);
-  //     state.splice(index, 1);
-  //   },
+    //   deleteContact: (state, action) => {
+    //     const index = state.findIndex(contact => contact.id === action.payload);
+    //     state.splice(index, 1);
+    //   },
 
-  //   deleteAllContacts: state => {
-  //     state.items.splice(0, state.items.length);
-  //   },
+    deleteAllContacts: state => {
+      state.items.splice(0, state.items.length);
+    },
 
-  //   sortContacts: state => {
-  //     state.items.sort((a, b) => a.name.localeCompare(b.name));
-  //   },
-  // },
+    sortContactsAlphabetically: state => {
+      state.items.sort((a, b) => {
+        return a.name.localeCompare(b.name);
+      });
+    },
+
+    sortContactsNotAlphabetically: state => {
+      state.items.sort((a, b) => {
+        return b.name.localeCompare(a.name);
+      });
+    },
+  },
 
   extraReducers: {
     [fetchContacts.pending]: handlePending,
@@ -104,15 +115,9 @@ const contactsSlice = createSlice({
       state.items.splice(index, 1);
     },
     [deleteContact.rejected]: handleRejected,
-    [deleteAllContacts]: handlePending,
-    [deleteAllContacts.fulfilled](state) {
-      state.isLoading = false;
-      state.error = null;
-      state.items.splice(0, 2);
-    },
-    [deleteAllContacts.rejected]: handleRejected,
   },
 });
 
-// export const { sortContacts } = contactsSlice.actions;
+export const { deleteAllContacts, sortContactsAlphabetically, sortContactsNotAlphabetically } =
+  contactsSlice.actions;
 export const contactsReducer = contactsSlice.reducer;

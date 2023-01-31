@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { setContactsFilter } from '../../redux/filterSlice';
-import { getContacts, getFilter } from 'redux/selectors';
+import { selectContacts, selectFilter } from 'redux/selectors';
 import css from './Filter.module.css';
 import clearIcon from '../../images/backspace.png';
 
@@ -20,10 +20,10 @@ export const Filter = () => {
         type="text"
         name="filter"
         onChange={handleChangeFilter}
-        value={useSelector(getFilter)}
-        disabled={useSelector(getContacts).length === 0}
+        value={useSelector(selectFilter)}
+        disabled={useSelector(selectContacts).length === 0}
       />
-      {useSelector(getFilter) && (
+      {useSelector(selectFilter) && (
         <button
           className={css.button}
           type="button"

@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 // import { addContact } from '../redux/operations';
 import { fetchContacts } from '../redux/operations';
-import { getContacts } from 'redux/selectors';
+import { selectContacts } from 'redux/selectors';
 import { Header } from './Header/Header';
 import { ContactForm } from './ContactForm/ContactForm';
 import { StatusBar } from './StatusBar/StatusBar';
@@ -11,7 +11,7 @@ import { ContactList } from './ContactList/ContactList';
 const App = () => {
   const dispatch = useDispatch();
 
-  const { items, isLoading, error } = useSelector(getContacts);
+  const { items, isLoading, error } = useSelector(selectContacts);
 
   useEffect(() => {
     dispatch(fetchContacts());
