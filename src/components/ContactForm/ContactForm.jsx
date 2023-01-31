@@ -11,7 +11,6 @@ export const ContactForm = () => {
   const handleSubmit = event => {
     event.preventDefault();
     const form = event.target;
-
     const isContactExist = contacts.find(
       contact => contact.name.toLowerCase() === event.target.elements.name.value.toLowerCase()
     );
@@ -20,11 +19,11 @@ export const ContactForm = () => {
     );
 
     if (isContactExist) {
-      alert(`${event.target.elements.name.value} is already in contacts`);
+      alert(`User ${event.target.elements.name.value} is already in contacts`);
       return;
     }
     if (isPhoneExist) {
-      alert(`${event.target.elements.phone.value} is already in contacts`);
+      alert(`Number ${event.target.elements.phone.value} is already in contacts`);
       return;
     }
 
