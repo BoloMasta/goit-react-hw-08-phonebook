@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { selectContacts, selectSortedAlphabetically } from 'redux/selectors';
+import { selectSortedAlphabetically, selectContactsCount } from 'redux/selectors';
 import {
   deleteAllContacts,
   sortContactsAlphabetically,
@@ -13,9 +13,9 @@ import sortIcon from '../../images/sort.png';
 import trashIcon from '../../images/trash.png';
 
 export const StatusBar = () => {
-  const contacts = useSelector(selectContacts);
-  const sortedAlphabetically = useSelector(selectSortedAlphabetically);
   const dispatch = useDispatch();
+  const sortedAlphabetically = useSelector(selectSortedAlphabetically);
+  const contactsCount = useSelector(selectContactsCount);
 
   const handleDeleteAllContacts = () => {
     dispatch(deleteAllContacts());
@@ -33,10 +33,10 @@ export const StatusBar = () => {
         <div className={css.counter}>
           <p className={css.counter__header}>You have</p>
           <p className={css.counter__data}>
-            {contacts.length} {contacts.length === 1 ? 'contact' : 'contacts'}
+            {contactsCount} {contactsCount === 1 ? 'contact' : 'contacts'}
           </p>
         </div>
-        {contacts.length > 0 && (
+        {contactsCount > 0 && (
           <div className={css.buttons}>
             <button className={css.button_sort} type="button" onClick={handleSortContacts}>
               <img src={sortIcon} alt="sort icon" className={css.icon} />
