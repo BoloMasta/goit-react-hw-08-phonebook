@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { selectContacts } from 'redux/selectors';
 import { addContact } from 'redux/operations';
-import PropTypes from 'prop-types';
 import css from './ContactForm.module.css';
 
 export const ContactForm = () => {
@@ -68,8 +67,4 @@ export const ContactForm = () => {
       </button>
     </form>
   );
-};
-
-ContactForm.propTypes = {
-  handleSubmit: PropTypes.func,
 };

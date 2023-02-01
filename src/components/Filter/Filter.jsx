@@ -1,5 +1,4 @@
 import { useDispatch, useSelector } from 'react-redux';
-import PropTypes from 'prop-types';
 import { setContactsFilter } from '../../redux/filterSlice';
 import { selectContacts, selectFilter } from 'redux/selectors';
 import css from './Filter.module.css';
@@ -34,8 +33,4 @@ export const Filter = () => {
       )}
     </label>
   );
-};
-
-Filter.propTypes = {
-  inputValue: PropTypes.string,
 };

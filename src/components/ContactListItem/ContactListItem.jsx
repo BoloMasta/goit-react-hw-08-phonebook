@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { deleteContact } from '../../redux/operations';
 import css from './ContactListItem.module.css';
 import userIcon from '../../images/user.png';
@@ -11,8 +11,6 @@ export const ContactListItem = ({ contact }) => {
   const handleDelete = () => {
     dispatch(deleteContact(contact.id));
   };
-
-  // console.log(contact);
 
   return (
     <li className={css.item}>
@@ -30,10 +28,10 @@ export const ContactListItem = ({ contact }) => {
   );
 };
 
-// ContactListItem.propTypes = {
-//   contact: PropTypes.shape({
-//     id: PropTypes.string,
-//     //name: PropTypes.string,
-//     //number: PropTypes.string,
-//   }),
-// };
+ContactListItem.propTypes = {
+  contact: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string,
+    phone: PropTypes.string,
+  }),
+};
