@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = { inputValue: '', sortedalphabetically: false };
+const initialState = { inputValue: '', sortedAlphabetically: false };
 
 const filterSlice = createSlice({
   name: 'filter',
@@ -20,7 +20,7 @@ const filterSlice = createSlice({
 
     setSortedAlphabetically: {
       reducer: state => {
-        state.sortedalphabetically = !state.sortedalphabetically;
+        state.sortedAlphabetically = !state.sortedAlphabetically;
       },
 
       prepare: () => {

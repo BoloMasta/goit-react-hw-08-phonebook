@@ -8,13 +8,7 @@ export const selectError = state => state.contacts.error;
 
 export const selectFilter = state => state.filter.inputValue;
 
-export const selectSortedAlphabetically = state => state.filter.sortedalphabetically;
-
-// export const selectFilteredContacts = state => {
-//   const contacts = selectContacts(state);
-//   const normalizedFilter = selectFilter(state).toLowerCase();
-//   return contacts.filter(contact => contact.name.toLowerCase().includes(normalizedFilter));
-// };
+export const selectSortedAlphabetically = state => state.filter.sortedAlphabetically;
 
 export const selectFilteredContacts = createSelector(
   [selectContacts, selectFilter],

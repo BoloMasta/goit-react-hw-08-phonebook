@@ -11,6 +11,7 @@ export const ContactForm = () => {
   const handleSubmit = event => {
     event.preventDefault();
     const form = event.target;
+
     const isContactExist = contacts.find(
       contact => contact.name.toLowerCase() === event.target.elements.name.value.toLowerCase()
     );
@@ -34,7 +35,6 @@ export const ContactForm = () => {
       })
     );
 
-    // console.log(event.target.elements.name.value, event.target.elements.number.value);
     form.reset();
   };
 

@@ -1,30 +1,24 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { selectSortedAlphabetically, selectContactsCount } from 'redux/selectors';
-import {
-  // deleteAllContacts,
-  sortContactsAlphabetically,
-  sortContactsReverseAlphabetically,
-} from '../../redux/contactsSlice';
-//import { deleteAllContacts } from 'redux/operations';
-import { setSortedAlphabetically } from 'redux/filterSlice';
+import { selectSortedAlphabetically, selectContactsCount } from '../../redux/selectors';
+import { sortContacts, sortContactsReverse } from '../../redux/contactsSlice';
+import { setSortedAlphabetically } from '../../redux/filterSlice';
 import { Filter } from '../Filter/Filter';
 import css from './StatusBar.module.css';
 import sortIcon from '../../images/sort.png';
-// import trashIcon from '../../images/trash.png';
 
 export const StatusBar = () => {
   const dispatch = useDispatch();
   const sortedAlphabetically = useSelector(selectSortedAlphabetically);
   const contactsCount = useSelector(selectContactsCount);
 
-  // const handleDeleteAllContacts = () => {
-  //   dispatch(deleteAllContacts());
-  // };
   const handleSortContacts = () => {
-    dispatch(setSortedAlphabetically(!sortedAlphabetically));
-    sortedAlphabetically
-      ? dispatch(sortContactsReverseAlphabetically())
-      : dispatch(sortContactsAlphabetically());
+    if (sortedAlphabetically) {
+      dispatch(sortContactsReverse());
+      dispatch(setSortedAlphabetically(false));
+    } else {
+      dispatch(sortContacts());
+      dispatch(setSortedAlphabetically(true));
+    }
   };
 
   return (
@@ -41,9 +35,6 @@ export const StatusBar = () => {
             <button className={css.button_sort} type="button" onClick={handleSortContacts}>
               <img src={sortIcon} alt="sort icon" className={css.icon} />
             </button>
-            {/* <button className={css.button_delete} type="button" onClick={handleDeleteAllContacts}>
-              <img src={trashIcon} alt="trash icon" className={css.icon} />
-            </button> */}
           </div>
         )}
       </div>
