@@ -3,7 +3,7 @@ import { selectSortedAlphabetically, selectContactsCount } from '../../redux/sel
 import { sortContacts, sortContactsReverse } from '../../redux/contactsSlice';
 import { setSortedAlphabetically } from '../../redux/filterSlice';
 import { Filter } from '../Filter/Filter';
-import css from './StatusBar.module.css';
+import css from './StatusBar.module.scss';
 import sortIcon from '../../images/sort.png';
 
 export const StatusBar = () => {
@@ -21,6 +21,11 @@ export const StatusBar = () => {
     }
   };
 
+  const addLike = event => {
+    console.log('add like');
+    event.target.classList.toggle(css.liked);
+  };
+
   return (
     <div className={css.StatusBar}>
       <div className={css.infoSection}>
@@ -32,6 +37,7 @@ export const StatusBar = () => {
         </div>
         {contactsCount > 0 && (
           <div className={css.buttons}>
+            <button className={css.likeButton} onClick={addLike}></button>
             <button className={css.button_sort} type="button" onClick={handleSortContacts}>
               <img src={sortIcon} alt="sort icon" className={css.icon} />
             </button>

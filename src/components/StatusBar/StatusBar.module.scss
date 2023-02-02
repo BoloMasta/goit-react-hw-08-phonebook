@@ -1,0 +1,106 @@
+.StatusBar {
+  border: 1px solid #000;
+  padding: 15px;
+  width: 400px;
+  border-radius: 10px;
+  background-color: var(--background);
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  margin-bottom: 20px;
+}
+
+.StatusBar:hover {
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+  background-color: var(--background-hover);
+}
+
+.infoSection {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.counter {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.counter__header {
+  margin: 0;
+}
+
+.counter__data {
+  margin: 0;
+  font-size: 20px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 75px;
+}
+
+.button_sort {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: all 250ms ease-in-out;
+  position: relative;
+}
+
+.button_sort:hover {
+  opacity: 1;
+}
+
+.icon {
+  width: 30px;
+  height: 30px;
+}
+
+.likeButton {
+  display: inline-block;
+  position: relative;
+  font-size: 24px;
+  cursor: pointer;
+  height: 35px;
+  width: 30px;
+  top: -4px;
+  border: none;
+  outline: none;
+  background: none;
+  overflow: hidden;
+  opacity: 0.5;
+  transition: all 250ms ease-in-out;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  &::before {
+    font-size: 2em;
+    color: #000;
+    content: '♥';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+  &::after {
+    font-size: 2em;
+    color: rgb(190, 0, 0);
+    content: '♥';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.2s;
+  }
+  &.liked::after {
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+}

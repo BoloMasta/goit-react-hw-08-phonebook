@@ -17,8 +17,8 @@ export const ContactList = () => {
         <Notification message="No contacts found" />
       ) : (
         <ul className={css.list}>
-          {filteredContacts.map(({ id, name, phone }) => (
-            <ContactListItem key={id} contact={{ id, name, phone }} />
+          {filteredContacts.map(({ id, name, phone, favourite }) => (
+            <ContactListItem key={id} contact={{ id, name, phone, favourite }} />
           ))}
         </ul>
       )}

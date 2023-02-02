@@ -1,0 +1,36 @@
+.likeButton {
+  display: inline-block;
+  position: relative;
+  font-size: 24px;
+  cursor: pointer;
+  height: 35px;
+  width: 30px;
+  top: -2px;
+  border: none;
+  outline: none;
+  background: none;
+  overflow: hidden;
+
+  &::before {
+    font-size: 2em;
+    color: #000;
+    content: '♥';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+  &::after {
+    font-size: 2em;
+    color: rgb(190, 0, 0);
+    content: '♥';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.2s;
+  }
+  &.liked::after {
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+}

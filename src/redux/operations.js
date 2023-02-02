@@ -33,3 +33,18 @@ export const deleteContact = createAsyncThunk('contacts/deleteContact', async (i
     return thunkAPI.rejectWithValue(error.message);
   }
 });
+
+export const toogleFavourite = createAsyncThunk(
+  'contacts/toogleFavourite',
+  async (contact, thunkAPI) => {
+    try {
+      const { data } = await axios.put(`/contacts/${contact.id}`, {
+        ...contact,
+        favourite: !contact.favourite,
+      });
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);

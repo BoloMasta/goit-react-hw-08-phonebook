@@ -1,7 +1,9 @@
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
-import { deleteContact } from '../../redux/operations';
-import css from './ContactListItem.module.css';
+import clsx from 'clsx';
+import { deleteContact, toogleFavourite } from '../../redux/operations';
+// import { ButtonToogleHeart } from 'components/ButtonToogleHeart/ButtonToogleHeart';
+import css from './ContactListItem.module.scss';
 import userIcon from '../../images/user.png';
 import telephoneIcon from '../../images/telephone.png';
 
@@ -12,9 +14,23 @@ export const ContactListItem = ({ contact }) => {
     dispatch(deleteContact(contact.id));
   };
 
+  const addLike = event => {
+    // event.target.classList.toggle(css.liked);
+    dispatch(toogleFavourite(contact));
+  };
+
+  console.log(contact);
+
   return (
     <li className={css.item}>
-      <img src={userIcon} alt="user icon" className={css.user_icon} />
+      <div className={css.item_icons}>
+        <img src={userIcon} alt="user icon" className={css.user_icon} />
+        {/*  <ButtonToogleHeart addLike={addLike} /> */}
+        <button
+          className={clsx(css.likeButton, contact.favourite && css.liked)}
+          onClick={addLike}
+        ></button>
+      </div>
       <p className={css.text}>
         {contact.name}: {contact.phone}
         <a href={`tel:${contact.phone}`}>
