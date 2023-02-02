@@ -10,6 +10,10 @@ export const selectFilter = state => state.filter.inputValue;
 
 export const selectSortedAlphabetically = state => state.filter.sortedAlphabetically;
 
+export const selectFavoutitesContacts = createSelector([selectContacts], contacts =>
+  contacts.filter(contact => contact.favourite)
+);
+
 export const selectFilteredContacts = createSelector(
   [selectContacts, selectFilter],
   (contacts, filter) => {
