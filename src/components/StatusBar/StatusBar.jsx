@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { selectSortedAlphabetically, selectContactsCount } from '../../redux/selectors';
 import { sortContacts, sortContactsReverse } from '../../redux/contactsSlice';
-import { setSortedAlphabetically } from '../../redux/filterSlice';
+import { setFavouriteOnly, setSortedAlphabetically } from '../../redux/filterSlice';
 import { Filter } from '../Filter/Filter';
 import css from './StatusBar.module.scss';
 import sortIcon from '../../images/sort.png';
@@ -22,8 +22,8 @@ export const StatusBar = () => {
   };
 
   const addLike = event => {
-    console.log('add like');
     event.target.classList.toggle(css.liked);
+    dispatch(setFavouriteOnly());
   };
 
   return (

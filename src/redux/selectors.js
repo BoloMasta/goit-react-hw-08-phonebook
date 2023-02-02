@@ -8,17 +8,21 @@ export const selectError = state => state.contacts.error;
 
 export const selectFilter = state => state.filter.inputValue;
 
+export const selectFavouriteOnly = state => state.filter.favouriteOnly;
+
 export const selectSortedAlphabetically = state => state.filter.sortedAlphabetically;
 
-export const selectFavoutitesContacts = createSelector([selectContacts], contacts =>
-  contacts.filter(contact => contact.favourite)
+export const selectVisibleContacts = createSelector(
+  [selectContacts, selectFavouriteOnly],
+  (contacts, favouriteOnly) => {
+    return favouriteOnly ? contacts.filter(contact => contact.favourite) : contacts;
+  }
 );
 
 export const selectFilteredContacts = createSelector(
-  [selectContacts, selectFilter],
+  [selectVisibleContacts, selectFilter],
   (contacts, filter) => {
-    const normalizedFilter = filter.toLowerCase();
-    return contacts.filter(contact => contact.name.toLowerCase().includes(normalizedFilter));
+    return contacts.filter(contact => contact.name.toLowerCase().includes(filter.toLowerCase()));
   }
 );
 
