@@ -11,7 +11,7 @@ export const StatusBar = () => {
   const [sortedAlphabetically, setSortedAlphabetically] = useState(false);
   const dispatch = useDispatch();
   // const sortedAlphabetically = useSelector(selectSortedAlphabetically);
-  const contactsCount = useSelector(selectContactsCount);
+  const { total, favourite } = useSelector(selectContactsCount);
 
   const handleSortContacts = () => {
     if (sortedAlphabetically) {
@@ -36,10 +36,11 @@ export const StatusBar = () => {
         <div className={css.counter}>
           <p className={css.counter__header}>You have</p>
           <p className={css.counter__data}>
-            {contactsCount} {contactsCount === 1 ? 'contact' : 'contacts'}
+            {total} {total === 1 ? 'contact' : 'contacts'}
+            {' (' + favourite + ' ♥ )'}
           </p>
         </div>
-        {contactsCount > 0 && (
+        {total > 0 && (
           <div className={css.buttons}>
             <button className={css.likeButton} onClick={addLike}></button>
             <button className={css.button_sort} type="button" onClick={handleSortContacts}>

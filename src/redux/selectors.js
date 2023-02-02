@@ -12,6 +12,20 @@ export const selectFavouriteOnly = state => state.filter.favouriteOnly;
 
 export const selectSortedAlphabetically = state => state.filter.sortedAlphabetically;
 
+export const selectContactsCount = createSelector([selectContacts], contacts => {
+  console.log('selectContactsCount. Now memoized!');
+  return contacts.reduce(
+    (count, contact) => {
+      if (contact.favourite) {
+        count.favourite++;
+      }
+      count.total++;
+      return count;
+    },
+    { total: 0, favourite: 0 }
+  );
+});
+
 export const selectVisibleContacts = createSelector(
   [selectContacts, selectFavouriteOnly],
   (contacts, favouriteOnly) => {
@@ -27,5 +41,3 @@ export const selectFilteredContacts = createSelector(
     return contacts.filter(contact => contact.name.toLowerCase().includes(filter.toLowerCase()));
   }
 );
-
-export const selectContactsCount = createSelector([selectContacts], contacts => contacts.length);
