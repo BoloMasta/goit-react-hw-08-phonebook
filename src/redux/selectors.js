@@ -13,7 +13,6 @@ export const selectFavouriteOnly = state => state.filter.favouriteOnly;
 export const selectSortedAlphabetically = state => state.filter.sortedAlphabetically;
 
 export const selectContactsCount = createSelector([selectContacts], contacts => {
-  console.log('selectContactsCount. Now memoized!');
   return contacts.reduce(
     (count, contact) => {
       if (contact.favourite) {
@@ -29,7 +28,6 @@ export const selectContactsCount = createSelector([selectContacts], contacts => 
 export const selectVisibleContacts = createSelector(
   [selectContacts, selectFavouriteOnly],
   (contacts, favouriteOnly) => {
-    console.log('selectVisibleContacts. Now memoized!');
     return favouriteOnly ? contacts.filter(contact => contact.favourite) : contacts;
   }
 );
@@ -37,7 +35,6 @@ export const selectVisibleContacts = createSelector(
 export const selectFilteredContacts = createSelector(
   [selectVisibleContacts, selectFilter],
   (contacts, filter) => {
-    console.log('selectFilteredContacts. Now memoized!');
     return contacts.filter(contact => contact.name.toLowerCase().includes(filter.toLowerCase()));
   }
 );

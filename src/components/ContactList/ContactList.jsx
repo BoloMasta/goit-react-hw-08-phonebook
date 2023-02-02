@@ -1,19 +1,21 @@
 import { useSelector } from 'react-redux';
+import { FadeLoader } from 'react-spinners';
+
 import {
+  selectIsLoading,
   selectFilteredContacts,
   selectFilter,
   selectContactsCount,
-  selectFavoutitesContacts,
 } from 'redux/selectors';
 import { ContactListItem } from 'components/ContactListItem/ContactListItem';
 import { Notification } from 'components/Notification/Notification';
-import css from './ContactList.module.css';
+import css from './ContactList.module.scss';
 
 export const ContactList = () => {
-  const filter = useSelector(selectFilter);
-  //const favourites = useSelector(selectFavoutitesContacts);
-  const filteredContacts = useSelector(selectFilteredContacts);
+  const isLoading = useSelector(selectIsLoading);
   const contactsCount = useSelector(selectContactsCount);
+  const filter = useSelector(selectFilter);
+  const filteredContacts = useSelector(selectFilteredContacts);
 
   return (
     <>
@@ -22,11 +24,26 @@ export const ContactList = () => {
       ) : filter !== '' && filteredContacts.length === 0 ? (
         <Notification message="No contacts found" />
       ) : (
-        <ul className={css.list}>
-          {filteredContacts.map(({ id, name, phone, favourite }) => (
-            <ContactListItem key={id} contact={{ id, name, phone, favourite }} />
-          ))}
-        </ul>
+        <>
+          <ul className={css.list}>
+            {isLoading && (
+              <FadeLoader
+                color="#3f51b5"
+                cssOverride={{
+                  position: 'absolute',
+                  top: '50%',
+                  left: '50%',
+                  height: 20,
+                  width: 0,
+                  transform: 'translate(-50%, -50%)',
+                }}
+              />
+            )}
+            {filteredContacts.map(({ id, name, phone, favourite }) => (
+              <ContactListItem key={id} contact={{ id, name, phone, favourite }} />
+            ))}
+          </ul>
+        </>
       )}
     </>
   );

@@ -34,7 +34,7 @@ export const StatusBar = () => {
     <div className={css.StatusBar}>
       <div className={css.infoSection}>
         <div className={css.counter}>
-          <p className={css.counter__header}>You have</p>
+          <p className={css.counter__header}>You have:</p>
           <p className={css.counter__data}>
             {total} {total === 1 ? 'contact' : 'contacts'}
             {' (' + favourite + ' ♥ )'}

@@ -4,6 +4,12 @@
   align-items: center;
   justify-content: space-between;
   border-radius: 8px;
+  opacity: 1;
+}
+
+.loading {
+  opacity: 0.5;
+  filter: blur(1px);
 }
 
 .item:hover {

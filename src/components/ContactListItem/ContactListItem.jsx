@@ -1,29 +1,28 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { deleteContact, toogleFavourite } from '../../redux/operations';
-// import { ButtonToogleHeart } from 'components/ButtonToogleHeart/ButtonToogleHeart';
+import { selectIsLoading } from 'redux/selectors';
 import css from './ContactListItem.module.scss';
 import userIcon from '../../images/user.png';
 import telephoneIcon from '../../images/telephone.png';
 
 export const ContactListItem = ({ contact }) => {
   const dispatch = useDispatch();
+  const isLoading = useSelector(selectIsLoading);
 
   const handleDelete = () => {
     dispatch(deleteContact(contact.id));
   };
 
   const addLike = event => {
-    // event.target.classList.toggle(css.liked);
     dispatch(toogleFavourite(contact));
   };
 
   return (
-    <li className={css.item}>
+    <li className={clsx(css.item, isLoading && css.loading)}>
       <div className={css.item_icons}>
         <img src={userIcon} alt="user icon" className={css.user_icon} />
-        {/*  <ButtonToogleHeart addLike={addLike} /> */}
         <button
           className={clsx(css.likeButton, contact.favourite && css.liked)}
           onClick={addLike}
