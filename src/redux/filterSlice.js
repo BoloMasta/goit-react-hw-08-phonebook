@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = { inputValue: '', favouriteOnly: false, sortedAlphabetically: false };
+const initialState = { inputValue: '', favouriteOnly: false };
 
 const filterSlice = createSlice({
   name: 'filter',
@@ -30,19 +30,19 @@ const filterSlice = createSlice({
       },
     },
 
-    setSortedAlphabetically: {
-      reducer: state => {
-        state.sortedAlphabetically = !state.sortedAlphabetically;
-      },
+    // setSortedAlphabetically: {
+    //   reducer: state => {
+    //     state.sortedAlphabetically = !state.sortedAlphabetically;
+    //   },
 
-      prepare: () => {
-        return {
-          payload: null,
-        };
-      },
-    },
+    //   prepare: () => {
+    //     return {
+    //       payload: null,
+    //     };
+    //   },
+    // },
   },
 });
 
-export const { setContactsFilter, setFavouriteOnly, setSortedAlphabetically } = filterSlice.actions;
+export const { setContactsFilter, setFavouriteOnly } = filterSlice.actions;
 export const filterReducer = filterSlice.reducer;

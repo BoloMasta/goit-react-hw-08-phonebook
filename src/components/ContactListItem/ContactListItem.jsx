@@ -19,8 +19,6 @@ export const ContactListItem = ({ contact }) => {
     dispatch(toogleFavourite(contact));
   };
 
-  console.log(contact);
-
   return (
     <li className={css.item}>
       <div className={css.item_icons}>

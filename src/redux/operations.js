@@ -39,7 +39,6 @@ export const toogleFavourite = createAsyncThunk(
   async (contact, thunkAPI) => {
     try {
       const { data } = await axios.put(`/contacts/${contact.id}`, {
-        ...contact,
         favourite: !contact.favourite,
       });
       return data;

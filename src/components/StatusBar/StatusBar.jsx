@@ -1,23 +1,27 @@
+import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectSortedAlphabetically, selectContactsCount } from '../../redux/selectors';
+import { selectContactsCount } from '../../redux/selectors';
 import { sortContacts, sortContactsReverse } from '../../redux/contactsSlice';
-import { setFavouriteOnly, setSortedAlphabetically } from '../../redux/filterSlice';
+import { setFavouriteOnly } from '../../redux/filterSlice';
 import { Filter } from '../Filter/Filter';
 import css from './StatusBar.module.scss';
 import sortIcon from '../../images/sort.png';
 
 export const StatusBar = () => {
+  const [sortedAlphabetically, setSortedAlphabetically] = useState(false);
   const dispatch = useDispatch();
-  const sortedAlphabetically = useSelector(selectSortedAlphabetically);
+  // const sortedAlphabetically = useSelector(selectSortedAlphabetically);
   const contactsCount = useSelector(selectContactsCount);
 
   const handleSortContacts = () => {
     if (sortedAlphabetically) {
       dispatch(sortContactsReverse());
-      dispatch(setSortedAlphabetically(false));
+      // dispatch(setSortedAlphabetically(false));
+      setSortedAlphabetically(false);
     } else {
       dispatch(sortContacts());
-      dispatch(setSortedAlphabetically(true));
+      // dispatch(setSortedAlphabetically(true));
+      setSortedAlphabetically(true);
     }
   };
 
