@@ -14,29 +14,27 @@ import sortIcon from '../../images/sort.png';
 import sortAzIcon from '../../images/sortaz.png';
 
 export const StatusBar = () => {
-  const [sortedAlphabetically, setSortedAlphabetically] = useState(false);
-  const [sortedByDate, setSortedByDate] = useState(false);
+  const [sorted, setSorted] = useState({ sortedAlphabetically: false, sortedByDate: false });
   const dispatch = useDispatch();
-  // const sortedAlphabetically = useSelector(selectSortedAlphabetically);
   const { total, favourite } = useSelector(selectContactsCount);
 
   const handleSortAzContacts = () => {
-    if (sortedAlphabetically) {
+    if (sorted.sortedAlphabetically) {
       dispatch(sortContactsAzReverse());
-      setSortedAlphabetically(false);
+      setSorted({ sortedAlphabetically: false, sortedByDate: false });
     } else {
       dispatch(sortContactsAz());
-      setSortedAlphabetically(true);
+      setSorted({ sortedAlphabetically: true, sortedByDate: false });
     }
   };
 
   const handleSortDateContacts = () => {
-    if (sortedByDate) {
+    if (sorted.sortedByDate) {
       dispatch(sortContactsByDateReverse());
-      setSortedByDate(false);
+      setSorted({ sortedAlphabetically: false, sortedByDate: false });
     } else {
       dispatch(sortContactsByDate());
-      setSortedByDate(true);
+      setSorted({ sortedAlphabetically: false, sortedByDate: true });
     }
   };
 
@@ -56,11 +54,21 @@ export const StatusBar = () => {
         </div>
         {total > 0 && (
           <div className={css.buttons}>
-            <button className={css.likeButton} onClick={addLike}></button>
-            <button className={css.button_sort} type="button" onClick={handleSortAzContacts}>
+            <button className={css.likeButton} title="Favourites" onClick={addLike}></button>
+            <button
+              className={css.button_sort}
+              type="button"
+              title="Sort alphabetically"
+              onClick={handleSortAzContacts}
+            >
               <img src={sortAzIcon} alt="sort AZ icon" className={css.icon} />
             </button>
-            <button className={css.button_sort} type="button" onClick={handleSortDateContacts}>
+            <button
+              className={css.button_sort}
+              type="button"
+              title="Sort by added date"
+              onClick={handleSortDateContacts}
+            >
               <img src={sortIcon} alt="sort date icon" className={css.icon} />
             </button>
           </div>

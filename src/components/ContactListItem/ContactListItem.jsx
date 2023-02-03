@@ -15,7 +15,7 @@ export const ContactListItem = ({ contact }) => {
     dispatch(deleteContact(contact.id));
   };
 
-  const addLike = event => {
+  const addLike = () => {
     dispatch(toogleFavourite(contact));
   };
 
@@ -25,13 +25,19 @@ export const ContactListItem = ({ contact }) => {
         <img src={userIcon} alt="user icon" className={css.user_icon} />
         <button
           className={clsx(css.likeButton, contact.favourite && css.liked)}
+          title={contact.favourite ? 'Remove from favourites' : 'Add to favourites'}
           onClick={addLike}
         ></button>
       </div>
       <p className={css.text}>
         {contact.name}: {contact.phone}
         <a href={`tel:${contact.phone}`}>
-          <img src={telephoneIcon} alt="telephone icon" className={css.telephone_icon} />
+          <img
+            src={telephoneIcon}
+            alt="telephone icon"
+            title="Call to"
+            className={css.telephone_icon}
+          />
         </a>
       </p>
       <button className={css.button} type="button" onClick={handleDelete}>

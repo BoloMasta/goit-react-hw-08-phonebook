@@ -21,12 +21,6 @@ export const ContactList = () => {
 
   return (
     <>
-      {/* {contactsCount === 0 ? (
-        <Notification message="No contacts yet" />
-      ) : filter !== '' && filteredContacts.length === 0 ? (
-        <Notification message="No contacts found" />
-      ) : ( */}
-
       <ul className={css.list}>
         {isLoading && (
           <FadeLoader
