@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-// import { FadeLoader } from 'react-spinners';
 import { fetchContacts } from '../redux/operations';
 import { selectError } from 'redux/selectors';
 import { Header } from './Header/Header';
@@ -22,7 +21,7 @@ const App = () => {
       <Header />
       <ContactForm />
       <StatusBar />
-      {error && <Notification message={error.message} />}
+      {error && <Notification message={error} />}
       {!error && <ContactList />}
     </>
   );

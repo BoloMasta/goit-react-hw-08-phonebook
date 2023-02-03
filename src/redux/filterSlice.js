@@ -33,4 +33,5 @@ const filterSlice = createSlice({
 });
 
 export const { setContactsFilter, setFavouriteOnly } = filterSlice.actions;
+
 export const filterReducer = filterSlice.reducer;

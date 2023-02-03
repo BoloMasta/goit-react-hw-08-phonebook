@@ -48,8 +48,8 @@ export const StatusBar = () => {
       <div className={css.infoSection}>
         <div className={css.counter}>
           <p className={css.counter__data}>
-            You have: {total} {total === 1 ? 'contact' : 'contacts'}
-            {' (' + favourite + ' ♥ )'}
+            You have {total} {total === 1 ? 'contact' : 'contacts'}
+            {' ( ' + favourite + ' ♥ )'}
           </p>
         </div>
         {total > 0 && (

@@ -29,10 +29,6 @@
   flex-direction: column;
 }
 
-.counter__header {
-  margin: 0;
-}
-
 .counter__data {
   margin: 0;
   font-size: 20px;
@@ -84,7 +80,7 @@
   }
 
   &::before {
-    font-size: 2em;
+    font-size: 1.8em;
     color: #000;
     content: '♥';
     position: absolute;
