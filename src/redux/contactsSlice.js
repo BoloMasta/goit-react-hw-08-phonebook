@@ -16,15 +16,28 @@ const contactsSlice = createSlice({
   name: 'contacts',
   initialState: { items: initialState, isLoading: false, error: null },
   reducers: {
-    sortContacts: state => {
+    sortContactsAz: state => {
       state.items.sort((a, b) => {
         return a.name.localeCompare(b.name);
       });
     },
 
-    sortContactsReverse: state => {
+    sortContactsAzReverse: state => {
       state.items.sort((a, b) => {
         return b.name.localeCompare(a.name);
+      });
+    },
+
+    sortContactsByDate: state => {
+      console.log(state.items);
+      state.items.sort((a, b) => {
+        return a.createdAt.localeCompare(b.createdAt);
+      });
+    },
+
+    sortContactsByDateReverse: state => {
+      state.items.sort((a, b) => {
+        return b.createdAt.localeCompare(a.createdAt);
       });
     },
   },
@@ -66,5 +79,10 @@ const contactsSlice = createSlice({
 // const index = state.items.findIndex(task => task.id === action.payload.id);
 // state.items.splice(index, 1, action.payload);
 
-export const { sortContacts, sortContactsReverse } = contactsSlice.actions;
+export const {
+  sortContactsAz,
+  sortContactsAzReverse,
+  sortContactsByDate,
+  sortContactsByDateReverse,
+} = contactsSlice.actions;
 export const contactsReducer = contactsSlice.reducer;

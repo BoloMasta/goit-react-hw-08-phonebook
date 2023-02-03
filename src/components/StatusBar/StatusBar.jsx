@@ -1,27 +1,42 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectContactsCount } from '../../redux/selectors';
-import { sortContacts, sortContactsReverse } from '../../redux/contactsSlice';
+import {
+  sortContactsAz,
+  sortContactsAzReverse,
+  sortContactsByDate,
+  sortContactsByDateReverse,
+} from '../../redux/contactsSlice';
 import { setFavouriteOnly } from '../../redux/filterSlice';
 import { Filter } from '../Filter/Filter';
 import css from './StatusBar.module.scss';
 import sortIcon from '../../images/sort.png';
+import sortAzIcon from '../../images/sortaz.png';
 
 export const StatusBar = () => {
   const [sortedAlphabetically, setSortedAlphabetically] = useState(false);
+  const [sortedByDate, setSortedByDate] = useState(false);
   const dispatch = useDispatch();
   // const sortedAlphabetically = useSelector(selectSortedAlphabetically);
   const { total, favourite } = useSelector(selectContactsCount);
 
-  const handleSortContacts = () => {
+  const handleSortAzContacts = () => {
     if (sortedAlphabetically) {
-      dispatch(sortContactsReverse());
-      // dispatch(setSortedAlphabetically(false));
+      dispatch(sortContactsAzReverse());
       setSortedAlphabetically(false);
     } else {
-      dispatch(sortContacts());
-      // dispatch(setSortedAlphabetically(true));
+      dispatch(sortContactsAz());
       setSortedAlphabetically(true);
+    }
+  };
+
+  const handleSortDateContacts = () => {
+    if (sortedByDate) {
+      dispatch(sortContactsByDateReverse());
+      setSortedByDate(false);
+    } else {
+      dispatch(sortContactsByDate());
+      setSortedByDate(true);
     }
   };
 
@@ -34,17 +49,19 @@ export const StatusBar = () => {
     <div className={css.StatusBar}>
       <div className={css.infoSection}>
         <div className={css.counter}>
-          <p className={css.counter__header}>You have:</p>
           <p className={css.counter__data}>
-            {total} {total === 1 ? 'contact' : 'contacts'}
+            You have: {total} {total === 1 ? 'contact' : 'contacts'}
             {' (' + favourite + ' ♥ )'}
           </p>
         </div>
         {total > 0 && (
           <div className={css.buttons}>
             <button className={css.likeButton} onClick={addLike}></button>
-            <button className={css.button_sort} type="button" onClick={handleSortContacts}>
-              <img src={sortIcon} alt="sort icon" className={css.icon} />
+            <button className={css.button_sort} type="button" onClick={handleSortAzContacts}>
+              <img src={sortAzIcon} alt="sort AZ icon" className={css.icon} />
+            </button>
+            <button className={css.button_sort} type="button" onClick={handleSortDateContacts}>
+              <img src={sortIcon} alt="sort date icon" className={css.icon} />
             </button>
           </div>
         )}

@@ -4,12 +4,19 @@
   justify-content: space-between;
   align-items: center;
   position: relative;
+  font-size: 20px;
 }
 
 .input {
   display: block;
-  width: 180px;
-  padding: 5px;
+  width: 220px;
+  padding: 5px 8px;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+.input:focus {
+  outline: none;
 }
 
 .button {
