@@ -76,13 +76,11 @@ const contactsSlice = createSlice({
   },
 });
 
-// const index = state.items.findIndex(task => task.id === action.payload.id);
-// state.items.splice(index, 1, action.payload);
-
 export const {
   sortContactsAz,
   sortContactsAzReverse,
   sortContactsByDate,
   sortContactsByDateReverse,
 } = contactsSlice.actions;
+
 export const contactsReducer = contactsSlice.reducer;

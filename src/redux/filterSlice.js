@@ -29,18 +29,6 @@ const filterSlice = createSlice({
         };
       },
     },
-
-    // setSortedAlphabetically: {
-    //   reducer: state => {
-    //     state.sortedAlphabetically = !state.sortedAlphabetically;
-    //   },
-
-    //   prepare: () => {
-    //     return {
-    //       payload: null,
-    //     };
-    //   },
-    // },
   },
 });
 

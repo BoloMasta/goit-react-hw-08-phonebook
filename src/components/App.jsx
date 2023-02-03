@@ -11,7 +11,6 @@ import { Notification } from './Notification/Notification';
 
 const App = () => {
   const dispatch = useDispatch();
-  // const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
 
   useEffect(() => {

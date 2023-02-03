@@ -20,29 +20,27 @@ export const ContactList = () => {
   const filteredContacts = useSelector(selectFilteredContacts);
 
   return (
-    <>
-      <ul className={css.list}>
-        {isLoading && (
-          <FadeLoader
-            color="#3f51b5"
-            cssOverride={{
-              position: 'absolute',
-              top: '50%',
-              left: '50%',
-              height: 20,
-              width: 0,
-              transform: 'translate(-50%, -50%)',
-            }}
-          />
-        )}
-        {!isLoading && contactsCount.total === 0 && <Notification message="No contacts yet" />}
-        {filteredContacts.map(({ id, name, phone, favourite }) => (
-          <ContactListItem key={id} contact={{ id, name, phone, favourite }} />
-        ))}
-        {filteredContacts.length === 0 && (filter !== '' || favouriteOnly) && (
-          <Notification message="No contacts found" />
-        )}
-      </ul>
-    </>
+    <ul className={css.list}>
+      {isLoading && (
+        <FadeLoader
+          color="#3f51b5"
+          cssOverride={{
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            height: 20,
+            width: 0,
+            transform: 'translate(-50%, -50%)',
+          }}
+        />
+      )}
+      {!isLoading && contactsCount.total === 0 && <Notification message="No contacts yet" />}
+      {filteredContacts.map(({ id, name, phone, favourite }) => (
+        <ContactListItem key={id} contact={{ id, name, phone, favourite }} />
+      ))}
+      {filteredContacts.length === 0 && (filter !== '' || favouriteOnly) && (
+        <Notification message="No contacts found" />
+      )}
+    </ul>
   );
 };
