@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectContactsCount } from '../../redux/selectors';
+import { selectContactsCount, selectFavouriteOnly } from '../../redux/selectors';
 import {
   sortContactsAz,
   sortContactsAzReverse,
@@ -16,6 +16,7 @@ import sortAzIcon from '../../images/sortaz.png';
 export const StatusBar = () => {
   const [sorted, setSorted] = useState({ sortedAlphabetically: false, sortedByDate: false });
   const dispatch = useDispatch();
+  const favouriteOnly = useSelector(selectFavouriteOnly);
   const { total, favourite } = useSelector(selectContactsCount);
 
   const handleSortAzContacts = () => {
@@ -54,11 +55,15 @@ export const StatusBar = () => {
         </div>
         {total > 0 && (
           <div className={css.buttons}>
-            <button className={css.likeButton} title="Favourites" onClick={addLike}></button>
+            <button
+              className={css.likeButton}
+              title={favouriteOnly ? 'Show all contacts' : 'Show only favourite contacts'}
+              onClick={addLike}
+            ></button>
             <button
               className={css.button_sort}
               type="button"
-              title="Sort alphabetically"
+              title={sorted.sortedAlphabetically ? 'Sort by name Z-A' : 'Sort by name A-Z'}
               onClick={handleSortAzContacts}
             >
               <img src={sortAzIcon} alt="sort AZ icon" className={css.icon} />
@@ -66,7 +71,8 @@ export const StatusBar = () => {
             <button
               className={css.button_sort}
               type="button"
-              title="Sort by added date"
+              X
+              title={sorted.sortedByDate ? 'Sort by date added reverse' : 'Sort by date added'}
               onClick={handleSortDateContacts}
             >
               <img src={sortIcon} alt="sort date icon" className={css.icon} />

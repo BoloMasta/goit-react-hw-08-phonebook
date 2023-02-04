@@ -21,20 +21,16 @@ const contactsSlice = createSlice({
         return a.name.localeCompare(b.name);
       });
     },
-
     sortContactsAzReverse: state => {
       state.items.sort((a, b) => {
         return b.name.localeCompare(a.name);
       });
     },
-
     sortContactsByDate: state => {
-      console.log(state.items);
       state.items.sort((a, b) => {
         return a.createdAt.localeCompare(b.createdAt);
       });
     },
-
     sortContactsByDateReverse: state => {
       state.items.sort((a, b) => {
         return b.createdAt.localeCompare(a.createdAt);
@@ -50,7 +46,6 @@ const contactsSlice = createSlice({
       state.items = action.payload;
     },
     [fetchContacts.rejected]: handleRejected,
-
     [addContact.pending]: handlePending,
     [addContact.fulfilled](state, action) {
       state.isLoading = false;
@@ -58,7 +53,6 @@ const contactsSlice = createSlice({
       state.items.push(action.payload);
     },
     [addContact.rejected]: handleRejected,
-
     [deleteContact.pending]: handlePending,
     [deleteContact.fulfilled](state, action) {
       state.isLoading = false;
@@ -67,7 +61,6 @@ const contactsSlice = createSlice({
       state.items.splice(index, 1);
     },
     [deleteContact.rejected]: handleRejected,
-
     [toogleFavourite.pending]: handlePending,
     [toogleFavourite.fulfilled](state, action) {
       state.isLoading = false;
@@ -85,5 +78,4 @@ export const {
   sortContactsByDate,
   sortContactsByDateReverse,
 } = contactsSlice.actions;
-
 export const contactsReducer = contactsSlice.reducer;

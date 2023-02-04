@@ -10,19 +10,16 @@ const filterSlice = createSlice({
       reducer: (state, action) => {
         state.inputValue = action.payload;
       },
-
       prepare: inputValue => {
         return {
           payload: inputValue,
         };
       },
     },
-
     setFavouriteOnly: {
       reducer: state => {
         state.favouriteOnly = !state.favouriteOnly;
       },
-
       prepare: () => {
         return {
           payload: null,
@@ -33,5 +30,4 @@ const filterSlice = createSlice({
 });
 
 export const { setContactsFilter, setFavouriteOnly } = filterSlice.actions;
-
 export const filterReducer = filterSlice.reducer;
