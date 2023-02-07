@@ -9,10 +9,11 @@
 :root {
   --background: rgb(248, 248, 248);
   --background-hover: rgb(238, 238, 238);
+  --appbar-background: rgb(228, 228, 228);
 }
 
 body {
-  padding: 20px;
+  padding: 0 20px;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
     'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;

@@ -6,6 +6,6 @@ export const Header = () => (
     <span>
       <img src={phonebookIcon} alt="phonebook icon" className={css.icon} />
     </span>
-    &nbsp; Redux Phonebook
+    &nbsp; Welcome to the phonebook
   </h1>
 );
