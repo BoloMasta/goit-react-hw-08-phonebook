@@ -7,7 +7,7 @@ import {
   selectFilter,
   selectFavouriteOnly,
   selectContactsCount,
-} from 'redux/selectors';
+} from 'redux/contacts/selectors';
 import { ContactListItem } from 'components/ContactListItem/ContactListItem';
 import { Notification } from 'components/Notification/Notification';
 import css from './ContactList.module.scss';

@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
-import { deleteContact, toogleFavourite } from '../../redux/operations';
-import { selectIsLoading } from 'redux/selectors';
+import { deleteContact, toogleFavourite } from '../../redux/contacts/operations';
+import { selectIsLoading } from 'redux/contacts/selectors';
 import css from './ContactListItem.module.scss';
 import userIcon from '../../images/user.png';
 import telephoneIcon from '../../images/telephone.png';

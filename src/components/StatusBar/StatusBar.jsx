@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectContactsCount, selectFavouriteOnly } from '../../redux/selectors';
+import { selectContactsCount, selectFavouriteOnly } from '../../redux/contacts/selectors';
 import {
   sortContactsAz,
   sortContactsAzReverse,
   sortContactsByDate,
   sortContactsByDateReverse,
-} from '../../redux/contactsSlice';
-import { setFavouriteOnly } from '../../redux/filterSlice';
+} from '../../redux/contacts/contactsSlice';
+import { setFavouriteOnly } from '../../redux/contacts/filterSlice';
 import { Filter } from '../Filter/Filter';
 import css from './StatusBar.module.scss';
 import sortIcon from '../../images/sort.png';

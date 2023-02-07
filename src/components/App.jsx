@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchContacts } from '../redux/operations';
-import { selectError } from 'redux/selectors';
+import { fetchContacts } from '../redux/contacts/operations';
+import { selectError } from 'redux/contacts/selectors';
 import { Header } from './Header/Header';
 import { ContactForm } from './ContactForm/ContactForm';
 import { StatusBar } from './StatusBar/StatusBar';
