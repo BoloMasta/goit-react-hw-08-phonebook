@@ -29,7 +29,7 @@ const Home = () => {
         <span style={styles.span}>
           <img src={phonebookIcon} alt="phonebook icon" className={styles.icon} />
         </span>
-        &nbsp; Welcome to the phonebook
+        &nbsp; Welcome to the Phonebook!
       </h1>
     </div>
   );
