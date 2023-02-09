@@ -19,7 +19,6 @@ export const addContact = createAsyncThunk('contacts/addContact', async (contact
       name,
       number,
     });
-    console.log(data);
     return data;
   } catch (error) {
     return thunkAPI.rejectWithValue(error.message);
