@@ -1,23 +1,18 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectContactsCount, selectFavouriteOnly } from '../../redux/contacts/selectors';
-import {
-  sortContactsAz,
-  sortContactsAzReverse,
-  sortContactsByDate,
-  sortContactsByDateReverse,
-} from '../../redux/contacts/contactsSlice';
-import { setFavouriteOnly } from '../../redux/contacts/filterSlice';
+import { selectContactsCount } from '../../redux/contacts/selectors';
+import { sortContactsAz, sortContactsAzReverse } from '../../redux/contacts/contactsSlice';
+//import { setFavouriteOnly } from '../../redux/contacts/filterSlice';
 import { Filter } from '../Filter/Filter';
 import css from './StatusBar.module.scss';
-import sortIcon from '../../images/sort.png';
+// import sortIcon from '../../images/sort.png';
 import sortAzIcon from '../../images/sortaz.png';
 
 export const StatusBar = () => {
   const [sorted, setSorted] = useState({ sortedAlphabetically: false, sortedByDate: false });
   const dispatch = useDispatch();
-  const favouriteOnly = useSelector(selectFavouriteOnly);
-  const { total, favourite } = useSelector(selectContactsCount);
+  // const favouriteOnly = useSelector(selectFavouriteOnly);
+  const { total } = useSelector(selectContactsCount);
 
   const handleSortAzContacts = () => {
     if (sorted.sortedAlphabetically) {
@@ -29,20 +24,20 @@ export const StatusBar = () => {
     }
   };
 
-  const handleSortDateContacts = () => {
-    if (sorted.sortedByDate) {
-      dispatch(sortContactsByDateReverse());
-      setSorted({ sortedAlphabetically: false, sortedByDate: false });
-    } else {
-      dispatch(sortContactsByDate());
-      setSorted({ sortedAlphabetically: false, sortedByDate: true });
-    }
-  };
+  // const handleSortDateContacts = () => {
+  //   if (sorted.sortedByDate) {
+  //     dispatch(sortContactsByDateReverse());
+  //     setSorted({ sortedAlphabetically: false, sortedByDate: false });
+  //   } else {
+  //     dispatch(sortContactsByDate());
+  //     setSorted({ sortedAlphabetically: false, sortedByDate: true });
+  //   }
+  // };
 
-  const addLike = event => {
-    event.target.classList.toggle(css.liked);
-    dispatch(setFavouriteOnly());
-  };
+  // const addLike = event => {
+  //   event.target.classList.toggle(css.liked);
+  //   dispatch(setFavouriteOnly());
+  // };
 
   return (
     <div className={css.StatusBar}>
@@ -50,16 +45,16 @@ export const StatusBar = () => {
         <div className={css.counter}>
           <p className={css.counter__data}>
             You have {total} {total === 1 ? 'contact' : 'contacts'}
-            {' ( ' + favourite + ' ♥ )'}
+            {/* {' ( ' + favourite + ' ♥ )'} */}
           </p>
         </div>
         {total > 0 && (
-          <div className={css.buttons}>
-            <button
+          <>
+            {/* <button
               className={css.likeButton}
               title={favouriteOnly ? 'Show all contacts' : 'Show only favourite contacts'}
               onClick={addLike}
-            ></button>
+            ></button> */}
             <button
               className={css.button_sort}
               type="button"
@@ -68,7 +63,7 @@ export const StatusBar = () => {
             >
               <img src={sortAzIcon} alt="sort AZ icon" className={css.icon} />
             </button>
-            <button
+            {/* <button
               className={css.button_sort}
               type="button"
               X
@@ -76,8 +71,8 @@ export const StatusBar = () => {
               onClick={handleSortDateContacts}
             >
               <img src={sortIcon} alt="sort date icon" className={css.icon} />
-            </button>
-          </div>
+            </button> */}
+          </>
         )}
       </div>
       <Filter />

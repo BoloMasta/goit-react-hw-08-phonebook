@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = { inputValue: '', favouriteOnly: false };
+const initialState = { inputValue: ''};
 
 const filterSlice = createSlice({
   name: 'filter',
@@ -16,18 +16,9 @@ const filterSlice = createSlice({
         };
       },
     },
-    setFavouriteOnly: {
-      reducer: state => {
-        state.favouriteOnly = !state.favouriteOnly;
-      },
-      prepare: () => {
-        return {
-          payload: null,
-        };
-      },
-    },
+    
   },
 });
 
-export const { setContactsFilter, setFavouriteOnly } = filterSlice.actions;
+export const { setContactsFilter,  } = filterSlice.actions;
 export const filterReducer = filterSlice.reducer;

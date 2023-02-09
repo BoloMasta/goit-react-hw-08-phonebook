@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
-import { deleteContact, toogleFavourite } from '../../redux/contacts/operations';
+import { deleteContact } from '../../redux/contacts/operations';
 import { selectIsLoading } from 'redux/contacts/selectors';
 import css from './ContactListItem.module.scss';
 import userIcon from '../../images/user.png';
@@ -15,19 +15,19 @@ export const ContactListItem = ({ contact }) => {
     dispatch(deleteContact(contact.id));
   };
 
-  const addLike = () => {
-    dispatch(toogleFavourite(contact));
-  };
+  // const addLike = () => {
+  //   dispatch(toogleFavourite(contact));
+  // };
 
   return (
     <li className={clsx(css.item, isLoading && css.loading)}>
       <div className={css.item_icons}>
         <img src={userIcon} alt="user icon" className={css.user_icon} />
-        <button
+        {/* <button
           className={clsx(css.likeButton, contact.favourite && css.liked)}
           title={contact.favourite ? 'Remove from favourites' : 'Add to favourites'}
           onClick={addLike}
-        ></button>
+        ></button> */}
       </div>
       <p className={css.text}>
         {contact.name}: {contact.number}
