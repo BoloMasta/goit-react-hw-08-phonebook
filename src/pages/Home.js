@@ -16,7 +16,7 @@ const styles = {
     height: 48,
   },
   title: {
-    fontWeight: 500,
+    fontWeight: 800,
     fontSize: 48,
     textAlign: 'center',
   },

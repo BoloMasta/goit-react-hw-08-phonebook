@@ -6,6 +6,10 @@
   color: #2a363b;
   font-size: 1.3rem;
 
+  &:hover {
+    color: #e84a5f;
+  }
+
   &.active {
     color: #e84a5f;
   }
