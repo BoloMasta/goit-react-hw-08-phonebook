@@ -1,13 +1,13 @@
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
-import Button from '@mui/material/Button';
+//import Button from '@mui/material/Button';
 //import DeleteIcon from '@mui/icons-material/Delete';
 import { deleteContact } from '../../redux/contacts/operations';
 import { selectIsLoading } from 'redux/contacts/selectors';
 import css from './ContactListItem.module.scss';
-import userIcon from '../../images/user.png';
-import telephoneIcon from '../../images/telephone.png';
+//import userIcon from '../../images/user.png';
+//import telephoneIcon from '../../images/telephone.png';
 
 import Typography from '@mui/material/Typography';
 

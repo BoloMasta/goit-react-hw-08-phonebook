@@ -6,7 +6,7 @@ import { sortContactsAz, sortContactsAzReverse } from '../../redux/contacts/cont
 import { Filter } from '../Filter/Filter';
 import css from './StatusBar.module.scss';
 // import sortIcon from '../../images/sort.png';
-import sortAzIcon from '../../images/sortaz.png';
+//import sortAzIcon from '../../images/sortaz.png';
 import IconButton from '@mui/material/IconButton';
 import SortByAlphaIcon from '@mui/icons-material/SortByAlpha';
 
