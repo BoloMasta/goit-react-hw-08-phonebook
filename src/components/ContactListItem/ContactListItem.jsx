@@ -30,8 +30,8 @@ export const ContactListItem = ({ contact }) => {
         ></button>
       </div>
       <p className={css.text}>
-        {contact.name}: {contact.phone}
-        <a href={`tel:${contact.phone}`}>
+        {contact.name}: {contact.number}
+        <a href={`tel:${contact.number}`}>
           <img
             src={telephoneIcon}
             alt="telephone icon"

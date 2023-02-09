@@ -35,8 +35,8 @@ export const ContactList = () => {
         />
       )}
       {!isLoading && contactsCount.total === 0 && <Notification message="No contacts yet" />}
-      {filteredContacts.map(({ id, name, phone, favourite }) => (
-        <ContactListItem key={id} contact={{ id, name, phone, favourite }} />
+      {filteredContacts.map(({ id, name, number, favourite }) => (
+        <ContactListItem key={id} contact={{ id, name, number, favourite }} />
       ))}
       {filteredContacts.length === 0 && (filter !== '' || favouriteOnly) && (
         <Notification message="No contacts found" />

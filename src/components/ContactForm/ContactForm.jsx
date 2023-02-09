@@ -15,7 +15,7 @@ export const ContactForm = () => {
       contact => contact.name.toLowerCase() === event.target.elements.name.value.toLowerCase()
     );
     const isPhoneExist = contacts.find(
-      contact => contact.phone === event.target.elements.phone.value
+      contact => contact.number === event.target.elements.number.value
     );
 
     if (isContactExist) {
@@ -23,14 +23,14 @@ export const ContactForm = () => {
       return;
     }
     if (isPhoneExist) {
-      alert(`Number ${event.target.elements.phone.value} is already in contacts`);
+      alert(`Number ${event.target.elements.number.value} is already in contacts`);
       return;
     }
 
     dispatch(
       addContact({
         name: event.target.elements.name.value,
-        phone: event.target.elements.phone.value,
+        number: event.target.elements.number.value,
       })
     );
 
@@ -55,7 +55,7 @@ export const ContactForm = () => {
           Number
           <input
             type="tel"
-            name="phone"
+            name="number"
             pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
             title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
             maxLength={15}
