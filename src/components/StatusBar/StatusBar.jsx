@@ -7,6 +7,8 @@ import { Filter } from '../Filter/Filter';
 import css from './StatusBar.module.scss';
 // import sortIcon from '../../images/sort.png';
 import sortAzIcon from '../../images/sortaz.png';
+import IconButton from '@mui/material/IconButton';
+import SortByAlphaIcon from '@mui/icons-material/SortByAlpha';
 
 export const StatusBar = () => {
   const [sorted, setSorted] = useState({ sortedAlphabetically: false, sortedByDate: false });
@@ -55,14 +57,22 @@ export const StatusBar = () => {
               title={favouriteOnly ? 'Show all contacts' : 'Show only favourite contacts'}
               onClick={addLike}
             ></button> */}
-            <button
+            {/* <button
               className={css.button_sort}
               type="button"
               title={sorted.sortedAlphabetically ? 'Sort by name Z-A' : 'Sort by name A-Z'}
               onClick={handleSortAzContacts}
             >
               <img src={sortAzIcon} alt="sort AZ icon" className={css.icon} />
-            </button>
+            </button> */}
+
+            <IconButton
+              onClick={handleSortAzContacts}
+              title={sorted.sortedAlphabetically ? 'Sort by name Z-A' : 'Sort by name A-Z'}
+            >
+              <SortByAlphaIcon size="large" sx={{ height: 35, width: 35 }} />
+            </IconButton>
+
             {/* <button
               className={css.button_sort}
               type="button"

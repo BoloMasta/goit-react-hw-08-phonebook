@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectContacts } from 'redux/contacts/selectors';
 import { addContact } from 'redux/contacts/operations';
 import css from './ContactForm.module.scss';
+import TextField from '@mui/material/TextField';
 
 export const ContactForm = () => {
   const dispatch = useDispatch();
@@ -40,6 +41,8 @@ export const ContactForm = () => {
   return (
     <form className={css.form} onSubmit={handleSubmit}>
       <div className={css.inputs}>
+        <TextField label="Name" variant="standard" />
+        <TextField label="Phone" variant="standard" />
         <label className={css.label}>
           Name
           <input
