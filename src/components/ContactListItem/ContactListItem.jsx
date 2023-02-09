@@ -13,6 +13,7 @@ import Typography from '@mui/material/Typography';
 
 import ListItem from '@mui/material/ListItem';
 import IconButton from '@mui/material/IconButton';
+import PersonIcon from '@mui/icons-material/Person';
 import DeleteIcon from '@mui/icons-material/Delete';
 import CallIcon from '@mui/icons-material/Call';
 
@@ -30,14 +31,17 @@ export const ContactListItem = ({ contact }) => {
 
   return (
     <ListItem className={clsx(css.item, isLoading && css.loading)}>
-      <div className={css.item_icons}>
+      {/* <div className={css.item_icons}>
         <img src={userIcon} alt="user icon" className={css.user_icon} />
         {/* <button
           className={clsx(css.likeButton, contact.favourite && css.liked)}
           title={contact.favourite ? 'Remove from favourites' : 'Add to favourites'}
           onClick={addLike}
         ></button> */}
-      </div>
+      {/* </div> */}
+
+      <PersonIcon sx={{ marginRight: 4 }} />
+
       <Typography variant="h6">
         {contact.name}: {contact.number}
       </Typography>
@@ -58,7 +62,6 @@ export const ContactListItem = ({ contact }) => {
       {/* <button className={css.button} type="button" onClick={handleDelete}>
         Delete
       </button> */}
-
       <IconButton onClick={handleDelete} sx={{ marginLeft: 'auto' }}>
         <DeleteIcon />
       </IconButton>
