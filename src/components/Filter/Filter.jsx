@@ -3,9 +3,9 @@ import { setContactsFilter } from '../../redux/contacts/filterSlice';
 import { selectContacts, selectFilter } from 'redux/contacts/selectors';
 import css from './Filter.module.scss';
 // import clearIcon from '../../images/backspace.png';
-import Typography from '@mui/material/Typography';
+//import Typography from '@mui/material/Typography';
 import Input from '@mui/material/Input';
-import TextField from '@mui/material/TextField';
+// import TextField from '@mui/material/TextField';
 
 export const Filter = () => {
   const dispatch = useDispatch();

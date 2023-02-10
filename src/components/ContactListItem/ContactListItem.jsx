@@ -31,21 +31,11 @@ export const ContactListItem = ({ contact }) => {
 
   return (
     <ListItem className={clsx(css.item, isLoading && css.loading)}>
-      {/* <div className={css.item_icons}>
-        <img src={userIcon} alt="user icon" className={css.user_icon} />
-        {/* <button
-          className={clsx(css.likeButton, contact.favourite && css.liked)}
-          title={contact.favourite ? 'Remove from favourites' : 'Add to favourites'}
-          onClick={addLike}
-        ></button> */}
-      {/* </div> */}
-
       <PersonIcon sx={{ marginRight: 1 }} />
-
       <Typography variant="subtitle1">
         {contact.name}: {contact.number}
       </Typography>
-      <IconButton href={`tel:${contact.number}`}>
+      <IconButton href={`tel:${contact.number}`} title="Call to">
         <CallIcon />
       </IconButton>
       {/* <p className={css.text}>
@@ -62,7 +52,7 @@ export const ContactListItem = ({ contact }) => {
       {/* <button className={css.button} type="button" onClick={handleDelete}>
         Delete
       </button> */}
-      <IconButton onClick={handleDelete} sx={{ marginLeft: 'auto' }}>
+      <IconButton onClick={handleDelete} sx={{ marginLeft: 'auto' }} title="Delete">
         <DeleteIcon />
       </IconButton>
     </ListItem>

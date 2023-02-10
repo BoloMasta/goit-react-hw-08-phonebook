@@ -31,7 +31,7 @@ export const StatusBar = () => {
 
   return (
     <div className={css.StatusBar}>
-      <div className={css.counter}>
+      <div className={css.counter} title="number of your contacts">
         <PersonIcon sx={{ marginRight: 1 }} />
         <Typography variant="h6" sx={{ textAlign: 'center' }}>
           {total}
