@@ -2,6 +2,10 @@ import { useDispatch } from 'react-redux';
 import { register } from 'redux/auth/operations';
 import css from './RegisterForm.module.scss';
 
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+import AppRegistrationIcon from '@mui/icons-material/AppRegistration';
+
 export const RegisterForm = () => {
   const dispatch = useDispatch();
 
@@ -15,7 +19,54 @@ export const RegisterForm = () => {
 
   return (
     <form className={css.form} onSubmit={handleSubmit}>
-      <label className={css.label}>
+      <TextField
+        label="Name"
+        variant="standard"
+        name="name"
+        type="text"
+        autoComplete="off"
+        placeholder="Enter your name"
+        fullWidth
+        margin="normal"
+      />
+      <TextField
+        label="Email"
+        variant="standard"
+        name="email"
+        type="email"
+        autoComplete="off"
+        placeholder="Enter your email"
+        fullWidth
+        margin="normal"
+      />
+      <TextField
+        label="Password"
+        variant="standard"
+        name="password"
+        type="password"
+        autoComplete="off"
+        placeholder="Enter your password"
+        fullWidth
+        margin="normal"
+      />
+
+      <Button
+        variant="contained"
+        type="submit"
+        color="primary"
+        size="large"
+        endIcon={<AppRegistrationIcon />}
+        sx={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          margin: '30px auto 0 auto',
+        }}
+      >
+        Sign up
+      </Button>
+
+      {/* <label className={css.label}>
         Name
         <input
           className={css.input}
@@ -50,7 +101,7 @@ export const RegisterForm = () => {
 
       <button className={css.button} type="submit">
         Sign up
-      </button>
+      </button> */}
     </form>
   );
 };

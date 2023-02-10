@@ -19,26 +19,27 @@ export const LoginForm = () => {
 
   return (
     <form className={css.form} onSubmit={handleSubmit}>
-      <div className={css.inputs}>
-        <TextField
-          label="Email"
-          variant="standard"
-          name="email"
-          type="email"
-          autoComplete="off"
-          placeholder="Enter your email"
-          sx={{ marginBottom: '20px', width: '300px' }}
-        />
-        <TextField
-          label="Password"
-          variant="standard"
-          name="password"
-          type="password"
-          autoComplete="off"
-          placeholder="Enter your password"
-          sx={{ width: '300px' }}
-        />
-        {/* <label className={css.label}>
+      <TextField
+        label="Email"
+        variant="standard"
+        name="email"
+        type="email"
+        autoComplete="off"
+        placeholder="Enter your email"
+        fullWidth
+        margin="normal"
+      />
+      <TextField
+        label="Password"
+        variant="standard"
+        name="password"
+        type="password"
+        autoComplete="off"
+        placeholder="Enter your password"
+        fullWidth
+        margin="normal"
+      />
+      {/* <label className={css.label}>
           Email
           <input
             className={css.input}
@@ -59,7 +60,6 @@ export const LoginForm = () => {
             placeholder="Enter your password"
           />
         </label> */}
-      </div>
 
       {/* <button className={css.button} type="submit">
         Log in
@@ -68,8 +68,14 @@ export const LoginForm = () => {
       <Button
         variant="contained"
         type="submit"
+        size="large"
         endIcon={<LoginIcon />}
-        sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto' }}
+        sx={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          margin: '30px auto 0 auto',
+        }}
       >
         Log in
       </Button>
