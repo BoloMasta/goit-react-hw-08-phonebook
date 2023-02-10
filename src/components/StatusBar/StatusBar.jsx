@@ -76,7 +76,7 @@ export const StatusBar = () => {
               onClick={handleSortAzContacts}
               title={sorted.sortedAlphabetically ? 'Sort by name Z-A' : 'Sort by name A-Z'}
             >
-              <SortByAlphaIcon size="large" sx={{ height: 35, width: 35 }} />
+              <SortByAlphaIcon size="large" sx={{ height: 30, width: 30 }} />
             </IconButton>
 
             {/* <button

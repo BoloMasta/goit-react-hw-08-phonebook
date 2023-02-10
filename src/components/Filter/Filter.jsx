@@ -2,8 +2,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setContactsFilter } from '../../redux/contacts/filterSlice';
 import { selectContacts, selectFilter } from 'redux/contacts/selectors';
 import css from './Filter.module.scss';
-import clearIcon from '../../images/backspace.png';
+// import clearIcon from '../../images/backspace.png';
 import Typography from '@mui/material/Typography';
+import Input from '@mui/material/Input';
 import TextField from '@mui/material/TextField';
 
 export const Filter = () => {
@@ -18,16 +19,29 @@ export const Filter = () => {
       <Typography variant="subtitle1" sx={{ display: 'inline' }}>
         Find contact by name:
       </Typography>
-      <TextField
+      <Input
+        placeholder="type here"
         type="text"
         name="filter"
         onChange={handleChangeFilter}
         value={useSelector(selectFilter)}
         disabled={useSelector(selectContacts).length === 0}
-        variant="standard"
-        sx={{ display: 'inline', marginLeft: 'auto', width: '50%' }}
-        inputProps={{ style: { fontSize: 20 } }}
       />
+      {/* <TextField
+        type="text"
+        name="filter"
+        onChange={handleChangeFilter}
+        value={useSelector(selectFilter)}
+        disabled={useSelector(selectContacts).length === 0}
+        variant="outlined"
+        sx={{
+          display: 'inline',
+          marginLeft: 'auto',
+          width: '50%',
+          height: '20px',
+        }}
+        inputProps={{ padding: '0px', fontSize: '14px' }}
+      /> */}
 
       {useSelector(selectFilter) && (
         <button

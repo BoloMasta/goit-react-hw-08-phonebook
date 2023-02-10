@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectContacts } from 'redux/contacts/selectors';
 import { addContact } from 'redux/contacts/operations';
 import css from './ContactForm.module.scss';
-import Typography from '@mui/material/Typography';
+//import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
@@ -43,9 +43,9 @@ export const ContactForm = () => {
 
   return (
     <form className={css.form} onSubmit={handleSubmit}>
-      <Typography variant="h5" sx={{ textAlign: 'center' }}>
+      {/* <Typography variant="h5" sx={{ textAlign: 'center' }}>
         Add contact
-      </Typography>
+      </Typography> */}
 
       <TextField
         label="Name"
