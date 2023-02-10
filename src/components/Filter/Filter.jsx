@@ -16,16 +16,14 @@ export const Filter = () => {
 
   return (
     <div className={css.filter}>
-      <Typography variant="subtitle1" sx={{ display: 'inline' }}>
-        Find contact by name:
-      </Typography>
       <Input
-        placeholder="type here"
+        placeholder="Filter contacts by name"
         type="text"
         name="filter"
         onChange={handleChangeFilter}
         value={useSelector(selectFilter)}
         disabled={useSelector(selectContacts).length === 0}
+        sx={{ maxWidth: '170px', marginRight: '10px' }}
       />
       {/* <TextField
         type="text"

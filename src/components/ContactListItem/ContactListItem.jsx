@@ -42,7 +42,7 @@ export const ContactListItem = ({ contact }) => {
 
       <PersonIcon sx={{ marginRight: 1 }} />
 
-      <Typography variant="h6">
+      <Typography variant="subtitle1">
         {contact.name}: {contact.number}
       </Typography>
       <IconButton href={`tel:${contact.number}`}>

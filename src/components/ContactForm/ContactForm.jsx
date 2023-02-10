@@ -105,7 +105,7 @@ export const ContactForm = () => {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          margin: '30px auto 0 auto',
+          margin: '10px auto 0 auto',
         }}
         type="submit"
       >
