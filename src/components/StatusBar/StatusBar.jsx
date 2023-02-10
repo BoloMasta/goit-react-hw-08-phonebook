@@ -7,6 +7,8 @@ import { Filter } from '../Filter/Filter';
 import css from './StatusBar.module.scss';
 // import sortIcon from '../../images/sort.png';
 //import sortAzIcon from '../../images/sortaz.png';
+import Typography from '@mui/material/Typography';
+
 import IconButton from '@mui/material/IconButton';
 import SortByAlphaIcon from '@mui/icons-material/SortByAlpha';
 
@@ -45,10 +47,14 @@ export const StatusBar = () => {
     <div className={css.StatusBar}>
       <div className={css.infoSection}>
         <div className={css.counter}>
-          <p className={css.counter__data}>
+          <Typography variant="h6" sx={{ textAlign: 'center' }}>
+            You have {total} {total === 1 ? 'contact' : 'contacts'}
+          </Typography>
+
+          {/* <p className={css.counter__data}>
             You have {total} {total === 1 ? 'contact' : 'contacts'}
             {/* {' ( ' + favourite + ' ♥ )'} */}
-          </p>
+          {/* </p> */}
         </div>
         {total > 0 && (
           <>
