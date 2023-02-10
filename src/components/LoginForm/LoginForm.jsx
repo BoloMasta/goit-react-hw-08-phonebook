@@ -2,6 +2,7 @@ import { useDispatch } from 'react-redux';
 import { logIn } from 'redux/auth/operations';
 import css from './LoginForm.module.scss';
 
+import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import LoginIcon from '@mui/icons-material/Login';
@@ -19,6 +20,10 @@ export const LoginForm = () => {
 
   return (
     <form className={css.form} onSubmit={handleSubmit}>
+      <Typography variant="h5" sx={{ textAlign: 'center' }}>
+        Login form
+      </Typography>
+
       <TextField
         label="Email"
         variant="standard"
