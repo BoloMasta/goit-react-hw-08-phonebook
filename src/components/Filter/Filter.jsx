@@ -17,13 +17,13 @@ export const Filter = () => {
   return (
     <div className={css.filter}>
       <Input
-        placeholder="Filter contacts by name"
+        placeholder="Filter"
         type="text"
         name="filter"
         onChange={handleChangeFilter}
         value={useSelector(selectFilter)}
         disabled={useSelector(selectContacts).length === 0}
-        sx={{ maxWidth: '170px', marginRight: '10px' }}
+        sx={{ maxWidth: '60px', marginRight: '10px' }}
       />
       {/* <TextField
         type="text"
