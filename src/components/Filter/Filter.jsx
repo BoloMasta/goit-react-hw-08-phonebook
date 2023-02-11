@@ -5,6 +5,7 @@ import css from './Filter.module.scss';
 // import clearIcon from '../../images/backspace.png';
 //import Typography from '@mui/material/Typography';
 import Input from '@mui/material/Input';
+import BackspaceIcon from '@mui/icons-material/Backspace';
 // import TextField from '@mui/material/TextField';
 
 export const Filter = () => {
@@ -42,17 +43,21 @@ export const Filter = () => {
       /> */}
 
       {useSelector(selectFilter) && (
-        <button
-          className={css.button}
-          type="button"
+        <BackspaceIcon
+          sx={{ fontSize: '20px', color: 'grey' }}
           onClick={() => dispatch(setContactsFilter(''))}
-        >
-          <img
-            src="https://img.icons8.com/ios/50/000000/backspace.png"
-            alt="clear icon"
-            className={css.icon}
-          />
-        </button>
+        />
+        // <button
+        //   className={css.button}
+        //   type="button"
+        //   onClick={() => dispatch(setContactsFilter(''))}
+        // >
+        //   <img
+        //     src="https://img.icons8.com/ios/50/000000/backspace.png"
+        //     alt="clear icon"
+        //     className={css.icon}
+        //   />
+        // </button>
       )}
     </div>
 
