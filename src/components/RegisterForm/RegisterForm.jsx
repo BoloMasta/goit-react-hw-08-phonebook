@@ -1,7 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { register } from 'redux/auth/operations';
 import css from './RegisterForm.module.scss';
-
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
@@ -9,7 +8,6 @@ import AppRegistrationIcon from '@mui/icons-material/AppRegistration';
 
 export const RegisterForm = () => {
   const dispatch = useDispatch();
-
   const handleSubmit = e => {
     e.preventDefault();
     const { name, email, password } = e.target.elements;
@@ -21,7 +19,6 @@ export const RegisterForm = () => {
       <Typography variant="h5" sx={{ textAlign: 'center' }}>
         Registration form
       </Typography>
-
       <TextField
         label="Name"
         variant="standard"
@@ -52,7 +49,6 @@ export const RegisterForm = () => {
         fullWidth
         margin="normal"
       />
-
       <Button
         variant="contained"
         type="submit"

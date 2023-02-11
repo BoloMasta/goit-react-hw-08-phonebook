@@ -9,12 +9,9 @@ import LoginIcon from '@mui/icons-material/Login';
 
 export const LoginForm = () => {
   const dispatch = useDispatch();
-
   const handleSubmit = e => {
     e.preventDefault();
-
     const { email, password } = e.target.elements;
-
     dispatch(logIn({ email: email.value, password: password.value }));
   };
 
@@ -23,7 +20,6 @@ export const LoginForm = () => {
       <Typography variant="h5" sx={{ textAlign: 'center' }}>
         Login form
       </Typography>
-
       <TextField
         label="Email"
         variant="standard"
@@ -44,32 +40,6 @@ export const LoginForm = () => {
         fullWidth
         margin="normal"
       />
-      {/* <label className={css.label}>
-          Email
-          <input
-            className={css.input}
-            type="email"
-            name="email"
-            autoComplete="off"
-            placeholder="Enter your email"
-          />
-        </label>
-
-        <label className={css.label}>
-          Password
-          <input
-            className={css.input}
-            type="password"
-            name="password"
-            autoComplete="off"
-            placeholder="Enter your password"
-          />
-        </label> */}
-
-      {/* <button className={css.button} type="submit">
-        Log in
-      </button> */}
-
       <Button
         variant="contained"
         type="submit"
