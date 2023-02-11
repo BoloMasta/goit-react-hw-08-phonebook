@@ -16,7 +16,7 @@ export const Navigation = () => {
         </IconButton>
       </NavLink>
 
-      <NavLink className={css.link} to="/contacts">
+      <NavLink to="/contacts">
         <IconButton title="Contacts">
           <ImportContactsIcon />
         </IconButton>
