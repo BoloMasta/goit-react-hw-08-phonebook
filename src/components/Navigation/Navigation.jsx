@@ -9,13 +9,13 @@ export const Navigation = () => {
 
   return (
     <nav>
-      <NavLink to="/">
+      <NavLink to="/" style={{ marginLeft: '15px' }}>
         <IconButton title="Home">
           <HomeIcon />
         </IconButton>
       </NavLink>
       {isLoggedIn && (
-        <NavLink to="/contacts">
+        <NavLink to="/contacts" style={{ marginLeft: '15px' }}>
           <IconButton title="Contacts">
             <ImportContactsIcon />
           </IconButton>

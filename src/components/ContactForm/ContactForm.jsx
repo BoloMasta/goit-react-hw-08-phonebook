@@ -1,8 +1,9 @@
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { MuiTelInput, matchIsValidTel } from 'mui-tel-input';
 import { selectContacts } from 'redux/contacts/selectors';
 import { addContact } from 'redux/contacts/operations';
 import css from './ContactForm.module.scss';
-//import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
@@ -31,6 +32,11 @@ export const ContactForm = () => {
       return;
     }
 
+    // if (!matchIsValidTel(event.target.elements.number.value)) {
+    //   alert(`Number ${event.target.elements.number.value} is not valid`);
+    //   return;
+    // }
+
     dispatch(
       addContact({
         name: event.target.elements.name.value,
@@ -39,14 +45,18 @@ export const ContactForm = () => {
     );
 
     form.reset();
+    setPhone('');
+  };
+
+  const [phone, setPhone] = useState('');
+  const handlePhoneChange = newPhone => {
+    const limit = 15;
+    if (newPhone.length > limit) return;
+    setPhone(newPhone);
   };
 
   return (
     <form className={css.form} onSubmit={handleSubmit}>
-      {/* <Typography variant="h5" sx={{ textAlign: 'center' }}>
-        Add contact
-      </Typography> */}
-
       <TextField
         label="Name"
         variant="standard"
@@ -58,45 +68,18 @@ export const ContactForm = () => {
         placeholder="Enter name"
         required
       />
-      <TextField
+      <MuiTelInput
         label="Phone"
         variant="standard"
-        type="tel"
         name="number"
-        pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-        title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-        maxLength={15}
         fullWidth
         margin="normal"
         placeholder="Enter phone number"
         required
+        value={phone}
+        onChange={handlePhoneChange}
+        error={matchIsValidTel(phone) === false}
       />
-      {/* <label className={css.label}>
-          Name
-          <input
-            type="text"
-            name="name"
-            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-            title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-            required
-          />
-        </label>
-
-        <label className={css.label}>
-          Number
-          <input
-            type="tel"
-            name="number"
-            pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-            title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-            maxLength={15}
-            required
-          />
-        </label> */}
-
-      {/* <button className={css.button} type="submit">
-        Add contact
-      </button> */}
 
       <Button
         variant="contained"

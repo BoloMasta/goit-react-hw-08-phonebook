@@ -27,11 +27,14 @@ const styles = {
 
 const Home = () => (
   <Box style={styles.container}>
-    <Typography variant="h3" align="center">
+    <Typography variant="h3" align="center" mb={8}>
       <span style={styles.span}>
         <img src={phonebookIcon} alt="phonebook icon" className={styles.icon} />
       </span>
       &nbsp; Welcome to the Phonebook!
+    </Typography>
+    <Typography variant="h6" align="center">
+      Please, register or log in to continue.
     </Typography>
   </Box>
 );

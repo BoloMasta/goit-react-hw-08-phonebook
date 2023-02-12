@@ -12,11 +12,6 @@ const persistConfig = {
   version: 1,
 };
 
-// const persistedReducer = persistReducer(
-//   persistConfig,
-//   combineReducers({ auth: authReducer, contacts: contactsReducer, filter: filterReducer })
-// );
-
 export const store = configureStore({
   reducer: {
     auth: persistReducer(persistConfig, authReducer),
