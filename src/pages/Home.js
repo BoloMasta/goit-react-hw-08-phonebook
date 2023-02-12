@@ -1,12 +1,14 @@
+import Box from '@mui/material/Box';
 import phonebookIcon from '../images/phonebook.png';
 import Typography from '@mui/material/Typography';
 
 const styles = {
   container: {
-    minHeight: 'calc(100vh - 150px)',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: '700px',
   },
   span: {
     position: 'relative',
@@ -23,24 +25,15 @@ const styles = {
   },
 };
 
-const Home = () => {
-  return (
-    <div style={styles.container}>
-      <Typography variant="h3" align="center">
-        <span style={styles.span}>
-          <img src={phonebookIcon} alt="phonebook icon" className={styles.icon} />
-        </span>
-        &nbsp; Welcome to the Phonebook!
-      </Typography>
-
-      {/* <h1 style={styles.title}>
-        <span style={styles.span}>
-          <img src={phonebookIcon} alt="phonebook icon" className={styles.icon} />
-        </span>
-        &nbsp; Welcome to the Phonebook!
-      </h1> */}
-    </div>
-  );
-};
+const Home = () => (
+  <Box style={styles.container}>
+    <Typography variant="h3" align="center">
+      <span style={styles.span}>
+        <img src={phonebookIcon} alt="phonebook icon" className={styles.icon} />
+      </span>
+      &nbsp; Welcome to the Phonebook!
+    </Typography>
+  </Box>
+);
 
 export default Home;

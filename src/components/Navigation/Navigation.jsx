@@ -10,12 +10,7 @@ export const Navigation = () => {
   return (
     <nav>
       <NavLink to="/">
-        <IconButton
-          title="Home"
-          sx={{
-            backgroundColor: 'red',
-          }}
-        >
+        <IconButton title="Home">
           <HomeIcon />
         </IconButton>
       </NavLink>
