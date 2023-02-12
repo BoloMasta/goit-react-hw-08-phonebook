@@ -32,11 +32,6 @@ export const ContactForm = () => {
       return;
     }
 
-    // if (!matchIsValidTel(event.target.elements.number.value)) {
-    //   alert(`Number ${event.target.elements.number.value} is not valid`);
-    //   return;
-    // }
-
     dispatch(
       addContact({
         name: event.target.elements.name.value,
@@ -50,8 +45,6 @@ export const ContactForm = () => {
 
   const [phone, setPhone] = useState('');
   const handlePhoneChange = newPhone => {
-    const limit = 15;
-    if (newPhone.length > limit) return;
     setPhone(newPhone);
   };
 
@@ -61,8 +54,6 @@ export const ContactForm = () => {
         label="Name"
         variant="standard"
         name="name"
-        pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-        title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
         fullWidth
         margin="normal"
         placeholder="Enter name"
@@ -79,6 +70,7 @@ export const ContactForm = () => {
         value={phone}
         onChange={handlePhoneChange}
         error={matchIsValidTel(phone) === false}
+        inputProps={{ maxLength: 20 }}
       />
 
       <Button

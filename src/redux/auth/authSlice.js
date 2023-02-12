@@ -4,6 +4,7 @@ import { register, logIn, logOut, fetchCurrentUser } from './operations';
 const initialState = {
   user: { name: null, email: null },
   token: null,
+  error: null,
   isLoggedIn: false,
   isFetchingCurrentUser: false,
 };
@@ -16,6 +17,9 @@ const authSlice = createSlice({
       state.user = payload.user;
       state.token = payload.token;
       state.isLoggedIn = true;
+    },
+    [register.rejected](state, { payload }) {
+      state.error = payload;
     },
     [logIn.fulfilled](state, { payload }) {
       state.user = payload.user;
