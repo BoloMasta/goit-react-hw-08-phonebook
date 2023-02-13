@@ -1,6 +1,8 @@
 import { NavLink } from 'react-router-dom';
+import { styled } from '@mui/material';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
+import { Button } from '@mui/material';
 
 const styles = {
   activeLink: {
@@ -27,7 +29,7 @@ export const AuthNav = () => (
       marginLeft: 'auto',
     }}
   >
-    <NavLink to="/register" style={({ isActive }) => (isActive ? styles.activeLink : styles.link)}>
+    {/* <NavLink to="/register" style={({ isActive }) => (isActive ? styles.activeLink : styles.link)}>
       <Typography variant="h6" fontWeight="600">
         Register
       </Typography>
@@ -36,6 +38,15 @@ export const AuthNav = () => (
       <Typography variant="h6" fontWeight="600">
         Login
       </Typography>
+    </NavLink> */}
+
+    <NavLink to="/register">
+      <Button color="primary">Register</Button>
+    </NavLink>
+    <NavLink to="/login">
+      <Button variant="contained" color="primary">
+        Login
+      </Button>
     </NavLink>
   </Box>
 );

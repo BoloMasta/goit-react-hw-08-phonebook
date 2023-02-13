@@ -1,9 +1,6 @@
 import { useSelector } from 'react-redux';
-// import { FadeLoader } from 'react-spinners';
-
 import List from '@mui/material/List';
 import CircularProgress from '@mui/material/CircularProgress';
-
 import {
   selectIsLoading,
   selectFilteredContacts,
@@ -25,18 +22,6 @@ export const ContactList = () => {
   return (
     <List className={css.list}>
       {isLoading && (
-        // <FadeLoader
-        //   color="#3f51b5"
-        //   cssOverride={{
-        //     position: 'absolute',
-        //     top: '50%',
-        //     left: '50%',
-        //     height: 20,
-        //     width: 0,
-        //     transform: 'translate(-50%, -50%)',
-        //   }}
-        // />
-
         <CircularProgress
           sx={{
             position: 'absolute',
