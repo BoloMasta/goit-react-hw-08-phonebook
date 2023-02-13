@@ -13,7 +13,7 @@ export const UserMenu = () => {
 
   return (
     <Box sx={{ display: 'flex', alignItems: 'center', gap: '18px', marginLeft: 'auto' }}>
-      <Typography variant="subtitle1">{user.name}, you are logged in</Typography>
+      <Typography variant="subtitle1">Hi {user.name}, you are logged in</Typography>
       <Tooltip title="Logout" placement="bottom" arrow>
         <IconButton onClick={() => dispatch(logOut())}>
           <LogoutIcon />

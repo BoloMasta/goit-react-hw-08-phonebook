@@ -7,7 +7,7 @@ import { store, persistor } from './redux/store';
 import { ThemeProvider } from '@mui/material/styles';
 import App from 'components/App';
 import './index.css';
-import { homePageStyles } from 'components/common/GlobalStyles';
+import { GlobalStylesProvider } from 'components/common/GlobalStyles';
 import theme from 'components/common/Theme';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -16,7 +16,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <PersistGate persistor={persistor} loading={null}>
         <BrowserRouter basename={process.env.PUBLIC_URL}>
           <ThemeProvider theme={theme}>
-            {homePageStyles}
+            {GlobalStylesProvider}
             <App />
           </ThemeProvider>
         </BrowserRouter>

@@ -2,12 +2,18 @@ import { Outlet } from 'react-router-dom';
 import { Suspense } from 'react';
 import { AppBar } from '../AppBar/AppBar';
 import Container from '@mui/material/Container';
-import { Notification } from 'components/Notification/Notification';
+import CircularProgress from '@mui/material/CircularProgress';
 
 export const Layout = () => (
   <Container maxWidth="md">
     <AppBar />
-    <Suspense fallback={<Notification message="Loading..." />}>
+    <Suspense
+      fallback={
+        <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
+          <CircularProgress />
+        </div>
+      }
+    >
       <Outlet />
     </Suspense>
   </Container>

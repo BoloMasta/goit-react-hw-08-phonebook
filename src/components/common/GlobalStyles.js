@@ -1,6 +1,6 @@
 import { GlobalStyles } from '@mui/material';
 
-export const homePageStyles = (
+export const GlobalStylesProvider = (
   <GlobalStyles
     styles={{
       '*': {
