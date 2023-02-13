@@ -5,6 +5,7 @@ import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
 import LogoutIcon from '@mui/icons-material/Logout';
 import Typography from '@mui/material/Typography';
+import Tooltip from '@mui/material/Tooltip';
 
 export const UserMenu = () => {
   const dispatch = useDispatch();
@@ -13,9 +14,11 @@ export const UserMenu = () => {
   return (
     <Box sx={{ display: 'flex', alignItems: 'center', gap: '18px', marginLeft: 'auto' }}>
       <Typography variant="subtitle1">{user.name}, you are logged in</Typography>
-      <IconButton title="Logout" onClick={() => dispatch(logOut())}>
-        <LogoutIcon />
-      </IconButton>
+      <Tooltip title="Logout" placement="bottom" arrow>
+        <IconButton onClick={() => dispatch(logOut())}>
+          <LogoutIcon />
+        </IconButton>
+      </Tooltip>
     </Box>
   );
 };

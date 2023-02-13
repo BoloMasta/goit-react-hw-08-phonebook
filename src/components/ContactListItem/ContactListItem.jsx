@@ -16,6 +16,7 @@ import IconButton from '@mui/material/IconButton';
 import PersonIcon from '@mui/icons-material/Person';
 import DeleteIcon from '@mui/icons-material/Delete';
 import CallIcon from '@mui/icons-material/Call';
+import Tooltip from '@mui/material/Tooltip';
 
 export const ContactListItem = ({ contact }) => {
   const dispatch = useDispatch();
@@ -35,9 +36,11 @@ export const ContactListItem = ({ contact }) => {
       <Typography variant="subtitle1">
         {contact.name}: {contact.number}
       </Typography>
-      <IconButton href={`tel:${contact.number}`} title="Call to">
-        <CallIcon />
-      </IconButton>
+      <Tooltip title="Call to" placement="bottom-start" arrow>
+        <IconButton href={`tel:${contact.number}`}>
+          <CallIcon />
+        </IconButton>
+      </Tooltip>
       {/* <p className={css.text}>
         {contact.name}: {contact.number}
         <a href={`tel:${contact.number}`}>
@@ -52,9 +55,11 @@ export const ContactListItem = ({ contact }) => {
       {/* <button className={css.button} type="button" onClick={handleDelete}>
         Delete
       </button> */}
-      <IconButton onClick={handleDelete} sx={{ marginLeft: 'auto' }} title="Delete">
-        <DeleteIcon />
-      </IconButton>
+      <Tooltip title="Delete" placement="bottom-start" arrow>
+        <IconButton onClick={handleDelete} sx={{ marginLeft: 'auto' }}>
+          <DeleteIcon />
+        </IconButton>
+      </Tooltip>
     </ListItem>
   );
 };

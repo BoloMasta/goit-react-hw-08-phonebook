@@ -8,6 +8,7 @@ import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import PersonIcon from '@mui/icons-material/Person';
 import SortByAlphaIcon from '@mui/icons-material/SortByAlpha';
+import Tooltip from '@mui/material/Tooltip';
 
 export const StatusBar = () => {
   const [sorted, setSorted] = useState({ sortedAlphabetically: false, sortedByDate: false });
@@ -54,12 +55,18 @@ export const StatusBar = () => {
         </Typography>
       </Box>
       <Filter />
-      <IconButton
-        onClick={handleSortAzContacts}
+      <Tooltip
         title={sorted.sortedAlphabetically ? 'Sort by name Z-A' : 'Sort by name A-Z'}
+        placement="bottom-start"
+        arrow
       >
-        <SortByAlphaIcon size="large" sx={{ height: 30, width: 30 }} />
-      </IconButton>
+        <IconButton
+          onClick={handleSortAzContacts}
+          title={sorted.sortedAlphabetically ? 'Sort by name Z-A' : 'Sort by name A-Z'}
+        >
+          <SortByAlphaIcon size="large" sx={{ height: 30, width: 30 }} />
+        </IconButton>
+      </Tooltip>
     </Box>
   );
 };

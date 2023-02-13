@@ -4,6 +4,7 @@ import { selectContacts, selectFilter } from 'redux/contacts/selectors';
 import Box from '@mui/material/Box';
 import Input from '@mui/material/Input';
 import BackspaceIcon from '@mui/icons-material/Backspace';
+import Tooltip from '@mui/material/Tooltip';
 
 export const Filter = () => {
   const dispatch = useDispatch();
@@ -29,19 +30,21 @@ export const Filter = () => {
       />
 
       {useSelector(selectFilter) && (
-        <BackspaceIcon
-          sx={{
-            fontSize: '20px',
-            color: 'grey',
-            cursor: 'pointer',
-            position: 'absolute',
-            top: '7px',
-            right: '2px',
-            '&:hover': { color: 'black' },
-          }}
-          onClick={() => dispatch(setContactsFilter(''))}
-          title="Clear filter"
-        />
+        <Tooltip title="Clear filter" placement="bottom" arrow>
+          <BackspaceIcon
+            sx={{
+              fontSize: '20px',
+              color: 'grey',
+              cursor: 'pointer',
+              position: 'absolute',
+              top: '7px',
+              right: '2px',
+              '&:hover': { color: 'black' },
+            }}
+            onClick={() => dispatch(setContactsFilter(''))}
+            title="Clear filter"
+          />
+        </Tooltip>
       )}
     </Box>
   );
