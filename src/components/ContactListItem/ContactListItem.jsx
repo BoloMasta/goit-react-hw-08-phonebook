@@ -1,66 +1,84 @@
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
-//import Button from '@mui/material/Button';
-//import DeleteIcon from '@mui/icons-material/Delete';
-import { deleteContact } from '../../redux/contacts/operations';
+import { deleteContact, editContact } from '../../redux/contacts/operations';
 import { selectIsLoading } from 'redux/contacts/selectors';
-import css from './ContactListItem.module.scss';
-//import userIcon from '../../images/user.png';
-//import telephoneIcon from '../../images/telephone.png';
-
+import { ContactEdit } from 'components/ContactEdit/ContactEdit';
+import Modal from '@mui/material/Modal';
+import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-
 import ListItem from '@mui/material/ListItem';
 import IconButton from '@mui/material/IconButton';
 import PersonIcon from '@mui/icons-material/Person';
 import DeleteIcon from '@mui/icons-material/Delete';
 import CallIcon from '@mui/icons-material/Call';
+import EditIcon from '@mui/icons-material/Edit';
 import Tooltip from '@mui/material/Tooltip';
+import css from './ContactListItem.module.scss';
+
+const style = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 400,
+  bgcolor: 'background.paper',
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 4,
+};
 
 export const ContactListItem = ({ contact }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  //const [contactData, setContactData] = useState({});
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsLoading);
 
   const handleDelete = () => {
     dispatch(deleteContact(contact.id));
   };
-
-  // const addLike = () => {
-  //   dispatch(toogleFavourite(contact));
-  // };
+  const handleOpen = () => {
+    console.log(contact);
+    setIsModalOpen(true);
+  };
+  const handleClose = () => setIsModalOpen(false);
 
   return (
-    <ListItem className={clsx(css.item, isLoading && css.loading)}>
-      <PersonIcon sx={{ marginRight: 1 }} />
-      <Typography variant="subtitle1">
-        {contact.name}: {contact.number}
-      </Typography>
-      <Tooltip title="Call to" placement="bottom-start" arrow>
-        <IconButton href={`tel:${contact.number}`}>
-          <CallIcon />
-        </IconButton>
-      </Tooltip>
-      {/* <p className={css.text}>
-        {contact.name}: {contact.number}
-        <a href={`tel:${contact.number}`}>
-          <img
-            src={telephoneIcon}
-            alt="telephone icon"
-            title="Call to"
-            className={css.telephone_icon}
-          />
-        </a>
-      </p> */}
-      {/* <button className={css.button} type="button" onClick={handleDelete}>
-        Delete
-      </button> */}
-      <Tooltip title="Delete" placement="bottom-start" arrow>
-        <IconButton onClick={handleDelete} sx={{ marginLeft: 'auto' }}>
-          <DeleteIcon />
-        </IconButton>
-      </Tooltip>
-    </ListItem>
+    <>
+      <Modal
+        open={isModalOpen}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <ContactEdit contact={contact} />
+        </Box>
+      </Modal>
+
+      <ListItem className={clsx(css.item, isLoading && css.loading)}>
+        <PersonIcon sx={{ marginRight: 1 }} />
+        <Typography variant="subtitle1">
+          {contact.name}: {contact.number}
+        </Typography>
+        <Tooltip title="Call to" placement="bottom-start" arrow>
+          <IconButton href={`tel:${contact.number}`}>
+            <CallIcon />
+          </IconButton>
+        </Tooltip>
+        <Tooltip title="Edit" placement="bottom-start" arrow>
+          <IconButton onClick={handleOpen} sx={{ marginLeft: 'auto' }}>
+            <EditIcon />
+          </IconButton>
+        </Tooltip>
+        <Tooltip title="Delete" placement="bottom-start" arrow>
+          <IconButton onClick={handleDelete}>
+            <DeleteIcon />
+          </IconButton>
+        </Tooltip>
+      </ListItem>
+    </>
   );
 };
 

@@ -13,7 +13,7 @@ import Tooltip from '@mui/material/Tooltip';
 export const StatusBar = () => {
   const [sorted, setSorted] = useState({ sortedAlphabetically: false, sortedByDate: false });
   const dispatch = useDispatch();
-  const { total } = useSelector(selectContactsCount);
+  const total = useSelector(selectContactsCount);
 
   const handleSortAzContacts = () => {
     if (sorted.sortedAlphabetically) {
@@ -60,10 +60,7 @@ export const StatusBar = () => {
         placement="bottom-start"
         arrow
       >
-        <IconButton
-          onClick={handleSortAzContacts}
-          title={sorted.sortedAlphabetically ? 'Sort by name Z-A' : 'Sort by name A-Z'}
-        >
+        <IconButton onClick={handleSortAzContacts}>
           <SortByAlphaIcon size="large" sx={{ height: 30, width: 30 }} />
         </IconButton>
       </Tooltip>

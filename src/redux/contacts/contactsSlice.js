@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchContacts, addContact, deleteContact, toogleFavourite } from './operations';
+import { fetchContacts, addContact, deleteContact, editContact } from './operations';
 
 const initialState = [];
 
@@ -24,16 +24,6 @@ const contactsSlice = createSlice({
     sortContactsAzReverse: state => {
       state.items.sort((a, b) => {
         return b.name.localeCompare(a.name);
-      });
-    },
-    sortContactsByDate: state => {
-      state.items.sort((a, b) => {
-        return a.createdAt.localeCompare(b.createdAt);
-      });
-    },
-    sortContactsByDateReverse: state => {
-      state.items.sort((a, b) => {
-        return b.createdAt.localeCompare(a.createdAt);
       });
     },
   },
@@ -61,21 +51,16 @@ const contactsSlice = createSlice({
       state.items.splice(index, 1);
     },
     [deleteContact.rejected]: handleRejected,
-    [toogleFavourite.pending]: handlePending,
-    [toogleFavourite.fulfilled](state, action) {
+    [editContact.pending]: handlePending,
+    [editContact.fulfilled](state, action) {
       state.isLoading = false;
       state.error = null;
       const index = state.items.findIndex(contact => contact.id === action.payload.id);
-      state.items.splice(index, 1, action.payload);
+      state.items[index] = action.payload;
     },
-    [toogleFavourite.rejected]: handleRejected,
+    [editContact.rejected]: handleRejected,
   },
 });
 
-export const {
-  sortContactsAz,
-  sortContactsAzReverse,
-  sortContactsByDate,
-  sortContactsByDateReverse,
-} = contactsSlice.actions;
+export const { sortContactsAz, sortContactsAzReverse } = contactsSlice.actions;
 export const contactsReducer = contactsSlice.reducer;

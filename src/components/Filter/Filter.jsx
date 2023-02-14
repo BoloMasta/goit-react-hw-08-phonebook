@@ -42,7 +42,6 @@ export const Filter = () => {
               '&:hover': { color: 'black' },
             }}
             onClick={() => dispatch(setContactsFilter(''))}
-            title="Clear filter"
           />
         </Tooltip>
       )}

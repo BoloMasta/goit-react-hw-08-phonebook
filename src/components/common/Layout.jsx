@@ -10,7 +10,14 @@ export const Layout = () => (
     <Suspense
       fallback={
         <div
-          style={{ display: 'flex', justifyContent: 'center', marginTop: '20px', height: '100vh' }}
+          style={{
+            width: '100%',
+            height: 'calc(100vh - 64px)',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            position: 'fixed',
+          }}
         >
           <CircularProgress />
         </div>

@@ -5,7 +5,6 @@ import {
   selectIsLoading,
   selectFilteredContacts,
   selectFilter,
-  selectFavouriteOnly,
   selectContactsCount,
 } from 'redux/contacts/selectors';
 import { ContactListItem } from 'components/ContactListItem/ContactListItem';
@@ -16,7 +15,6 @@ export const ContactList = () => {
   const isLoading = useSelector(selectIsLoading);
   const contactsCount = useSelector(selectContactsCount);
   const filter = useSelector(selectFilter);
-  const favouriteOnly = useSelector(selectFavouriteOnly);
   const filteredContacts = useSelector(selectFilteredContacts);
 
   return (
@@ -31,10 +29,10 @@ export const ContactList = () => {
         />
       )}
       {!isLoading && contactsCount.total === 0 && <Notification message="No contacts yet" />}
-      {filteredContacts.map(({ id, name, number, favourite }) => (
-        <ContactListItem key={id} contact={{ id, name, number, favourite }} />
+      {filteredContacts.map(({ id, name, number }) => (
+        <ContactListItem key={id} contact={{ id, name, number }} />
       ))}
-      {filteredContacts.length === 0 && (filter !== '' || favouriteOnly) && (
+      {filteredContacts.length === 0 && filter !== '' && (
         <Notification message="No contacts found" />
       )}
     </List>
