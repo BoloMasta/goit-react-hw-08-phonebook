@@ -9,7 +9,9 @@ export const Layout = () => (
     <AppBar />
     <Suspense
       fallback={
-        <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
+        <div
+          style={{ display: 'flex', justifyContent: 'center', marginTop: '20px', height: '100vh' }}
+        >
           <CircularProgress />
         </div>
       }

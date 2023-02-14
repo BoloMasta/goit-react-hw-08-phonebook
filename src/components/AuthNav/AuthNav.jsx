@@ -1,25 +1,28 @@
 import { NavLink } from 'react-router-dom';
-import { styled } from '@mui/material';
 import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import { Button } from '@mui/material';
+import Link from '@mui/material/Link';
 
 const styles = {
-  activeLink: {
-    color: 'red',
-    display: 'inline-block',
-    textDecoration: 'underline',
-    padding: '12px',
-    fontWeight: '700',
-    fontSize: '1.3rem',
-  },
   link: {
-    color: 'black',
-    display: 'inline-block',
-    textDecoration: 'none',
     padding: '12px',
-    fontWeight: '700',
-    fontSize: '1.3rem',
+    position: 'relative',
+
+    '&:hover': {
+      color: '#be4d25',
+    },
+
+    '&.active::after': {
+      content: '""',
+      display: 'block',
+      width: 'calc(100% - 24px)',
+      height: '2px',
+      backgroundColor: '#be4d25',
+      position: 'absolute',
+      bottom: '8px',
+      left: '12px',
+      boxShadow: '0 0 10px 1px #be4d25',
+      opacity: 0.6,
+    },
   },
 };
 
@@ -29,24 +32,11 @@ export const AuthNav = () => (
       marginLeft: 'auto',
     }}
   >
-    {/* <NavLink to="/register" style={({ isActive }) => (isActive ? styles.activeLink : styles.link)}>
-      <Typography variant="h6" fontWeight="600">
-        Register
-      </Typography>
-    </NavLink>
-    <NavLink to="/login" style={({ isActive }) => (isActive ? styles.activeLink : styles.link)}>
-      <Typography variant="h6" fontWeight="600">
-        Login
-      </Typography>
-    </NavLink> */}
-
-    <NavLink to="/register">
-      <Button color="primary">Register</Button>
-    </NavLink>
-    <NavLink to="/login">
-      <Button variant="contained" color="primary">
-        Login
-      </Button>
-    </NavLink>
+    <Link component={NavLink} to="/register" sx={styles.link}>
+      Register
+    </Link>
+    <Link component={NavLink} to="/login" sx={styles.link}>
+      Login
+    </Link>
   </Box>
 );

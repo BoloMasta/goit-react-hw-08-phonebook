@@ -38,6 +38,20 @@ let theme = createTheme({
         },
       },
     },
+
+    MuiLink: {
+      styleOverrides: {
+        root: {
+          color: '#441155',
+          textDecoration: 'none',
+          fontFamily:
+            'apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
+          fontWeight: '600',
+          fontSize: '1.2rem',
+          display: 'inline-block',
+        },
+      },
+    },
   },
 });
 
