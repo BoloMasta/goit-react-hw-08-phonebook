@@ -19,15 +19,7 @@ export const ContactList = () => {
 
   return (
     <List className={css.list}>
-      {isLoading && (
-        <CircularProgress
-          sx={{
-            position: 'absolute',
-            top: '35%',
-            left: '45%',
-          }}
-        />
-      )}
+      {isLoading && <CircularProgress className={css.loader} />}
       {!isLoading && contactsCount.total === 0 && <Notification message="No contacts yet" />}
       {filteredContacts.map(({ id, name, number }) => (
         <ContactListItem key={id} contact={{ id, name, number }} />

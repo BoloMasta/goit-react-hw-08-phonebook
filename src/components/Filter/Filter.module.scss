@@ -1,0 +1,23 @@
+.filter {
+  margin-left: auto;
+  position: relative;
+}
+
+.input {
+  max-width: 60px;
+  margin-right: 20px;
+}
+
+.backspaceIcon {
+  font-size: 20px;
+  color: grey;
+  cursor: pointer;
+  position: absolute;
+  top: 7px;
+  right: 2px;
+  transition: color 250ms ease-in-out;
+
+  &:hover {
+    color: black;
+  }
+}

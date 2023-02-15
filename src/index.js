@@ -5,10 +5,10 @@ import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/lib/integration/react';
 import { store, persistor } from './redux/store';
 import { ThemeProvider } from '@mui/material/styles';
-import App from 'components/App';
-import './index.css';
 import { GlobalStylesProvider } from 'components/common/GlobalStyles';
 import theme from 'components/common/Theme';
+import App from 'components/App';
+import './index.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

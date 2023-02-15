@@ -5,6 +5,7 @@ import Box from '@mui/material/Box';
 import Input from '@mui/material/Input';
 import BackspaceIcon from '@mui/icons-material/Backspace';
 import Tooltip from '@mui/material/Tooltip';
+import css from './Filter.module.scss';
 
 export const Filter = () => {
   const dispatch = useDispatch();
@@ -13,12 +14,7 @@ export const Filter = () => {
   };
 
   return (
-    <Box
-      sx={{
-        marginLeft: 'auto',
-        position: 'relative',
-      }}
-    >
+    <Box className={css.filter}>
       <Input
         placeholder="Filter"
         type="text"
@@ -26,21 +22,13 @@ export const Filter = () => {
         onChange={handleChangeFilter}
         value={useSelector(selectFilter)}
         disabled={useSelector(selectContacts).length === 0}
-        sx={{ maxWidth: '60px', marginRight: '20px' }}
+        className={css.input}
       />
 
       {useSelector(selectFilter) && (
         <Tooltip title="Clear filter" placement="bottom" arrow>
           <BackspaceIcon
-            sx={{
-              fontSize: '20px',
-              color: 'grey',
-              cursor: 'pointer',
-              position: 'absolute',
-              top: '7px',
-              right: '2px',
-              '&:hover': { color: 'black' },
-            }}
+            className={css.backspaceIcon}
             onClick={() => dispatch(setContactsFilter(''))}
           />
         </Tooltip>

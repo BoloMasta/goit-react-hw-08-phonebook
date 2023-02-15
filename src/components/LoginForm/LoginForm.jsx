@@ -1,11 +1,10 @@
 import { useDispatch } from 'react-redux';
 import { logIn } from 'redux/auth/operations';
-import css from './LoginForm.module.scss';
-
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import LoginIcon from '@mui/icons-material/Login';
+import css from './LoginForm.module.scss';
 
 export const LoginForm = () => {
   const dispatch = useDispatch();
@@ -45,12 +44,7 @@ export const LoginForm = () => {
         type="submit"
         size="large"
         endIcon={<LoginIcon />}
-        sx={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          margin: '30px auto 0 auto',
-        }}
+        className={css.submitButton}
       >
         Log in
       </Button>

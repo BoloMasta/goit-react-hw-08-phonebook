@@ -1,23 +1,22 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectError } from 'redux/auth/selectors';
 import { register } from 'redux/auth/operations';
-import css from './RegisterForm.module.scss';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { Notification } from 'components/Notification/Notification';
 import AppRegistrationIcon from '@mui/icons-material/AppRegistration';
-import { useSelector } from 'react-redux';
-import { selectError } from 'redux/auth/selectors';
+import css from './RegisterForm.module.scss';
 
 export const RegisterForm = () => {
+  const error = useSelector(selectError);
   const dispatch = useDispatch();
+
   const handleSubmit = e => {
     e.preventDefault();
     const { name, email, password } = e.target.elements;
     dispatch(register({ name: name.value, email: email.value, password: password.value }));
   };
-
-  const error = useSelector(selectError);
 
   return (
     <>
@@ -61,12 +60,7 @@ export const RegisterForm = () => {
           color="primary"
           size="large"
           endIcon={<AppRegistrationIcon />}
-          sx={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            margin: '30px auto 0 auto',
-          }}
+          className={css.submitButton}
         >
           Sign up
         </Button>

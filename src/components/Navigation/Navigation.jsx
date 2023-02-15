@@ -48,23 +48,6 @@ export const Navigation = () => {
           </Tooltip>
         </Link>
       )}
-
-      {/* <NavLink to="/" style={{ marginLeft: '15px' }}>
-        <Tooltip title="Home" placement="bottom" arrow>
-          <IconButton>
-            <HomeIcon />
-          </IconButton>
-        </Tooltip>
-      </NavLink>
-      {isLoggedIn && (
-        <NavLink to="/contacts" style={{ marginLeft: '15px' }}>
-          <Tooltip title="Contacts" placement="bottom" arrow>
-            <IconButton>
-              <ImportContactsIcon />
-            </IconButton>
-          </Tooltip>
-        </NavLink>
-      )} */}
     </nav>
   );
 };
