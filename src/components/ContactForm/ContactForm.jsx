@@ -6,12 +6,18 @@ import { addContact } from 'redux/contacts/operations';
 import css from './ContactForm.module.scss';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import BackspaceIcon from '@mui/icons-material/Backspace';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 
 export const ContactForm = () => {
+  const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const contacts = useSelector(selectContacts);
   const dispatch = useDispatch();
+
+  const handleNameChange = newName => {
+    setName(newName);
+  };
 
   const handlePhoneChange = newPhone => {
     setPhone(newPhone);
@@ -57,8 +63,18 @@ export const ContactForm = () => {
         margin="normal"
         placeholder="Enter name"
         required
+        //value={name}
+        //onChange={handleNameChange}
         inputProps={{ maxLength: 30 }}
+        value={name}
+        onChange={event => handleNameChange(event.target.value)}
       />
+      <BackspaceIcon
+        className={css.backspaceIconName}
+        onClick={() => setName('')}
+        style={{ display: name.length > 0 ? 'block' : 'none' }}
+      />
+
       <MuiTelInput
         label="Phone"
         variant="standard"
@@ -71,6 +87,11 @@ export const ContactForm = () => {
         onChange={handlePhoneChange}
         error={phone.length > 0 && matchIsValidTel(phone) === false}
         inputProps={{ maxLength: 20 }}
+      />
+      <BackspaceIcon
+        className={css.backspaceIconPhone}
+        onClick={() => setPhone('')}
+        style={{ display: phone.length > 0 ? 'block' : 'none' }}
       />
 
       <Button
