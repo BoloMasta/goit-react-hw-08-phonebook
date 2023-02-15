@@ -28,10 +28,10 @@ export const ContactForm = () => {
     const form = event.target;
 
     const isContactExist = contacts.find(
-      contact => contact.name.toLowerCase() === event.target.elements.name.value.toLowerCase()
+      contact => contact.name.toLowerCase() === name.toLowerCase()
     );
     const isPhoneExist = contacts.find(
-      contact => contact.number === event.target.elements.number.value
+      contact => contact.number.replace(/\s/g, '') === phone.replace(/\s/g, '')
     );
     if (isContactExist) {
       alert(`User ${event.target.elements.name.value} is already in contacts`);
@@ -63,8 +63,6 @@ export const ContactForm = () => {
         margin="normal"
         placeholder="Enter name"
         required
-        //value={name}
-        //onChange={handleNameChange}
         inputProps={{ maxLength: 30 }}
         value={name}
         onChange={event => handleNameChange(event.target.value)}
