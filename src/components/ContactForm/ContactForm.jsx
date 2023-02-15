@@ -9,8 +9,13 @@ import Button from '@mui/material/Button';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 
 export const ContactForm = () => {
-  const dispatch = useDispatch();
+  const [phone, setPhone] = useState('');
   const contacts = useSelector(selectContacts);
+  const dispatch = useDispatch();
+
+  const handlePhoneChange = newPhone => {
+    setPhone(newPhone);
+  };
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -22,7 +27,6 @@ export const ContactForm = () => {
     const isPhoneExist = contacts.find(
       contact => contact.number === event.target.elements.number.value
     );
-
     if (isContactExist) {
       alert(`User ${event.target.elements.name.value} is already in contacts`);
       return;
@@ -34,18 +38,13 @@ export const ContactForm = () => {
 
     dispatch(
       addContact({
-        name: event.target.elements.name.value,
-        number: event.target.elements.number.value,
+        name: form.elements.name.value,
+        number: form.elements.number.value,
       })
     );
 
     form.reset();
     setPhone('');
-  };
-
-  const [phone, setPhone] = useState('');
-  const handlePhoneChange = newPhone => {
-    setPhone(newPhone);
   };
 
   return (
@@ -58,6 +57,7 @@ export const ContactForm = () => {
         margin="normal"
         placeholder="Enter name"
         required
+        inputProps={{ maxLength: 30 }}
       />
       <MuiTelInput
         label="Phone"
@@ -69,19 +69,14 @@ export const ContactForm = () => {
         required
         value={phone}
         onChange={handlePhoneChange}
-        error={matchIsValidTel(phone) === false}
+        error={phone.length > 0 && matchIsValidTel(phone) === false}
         inputProps={{ maxLength: 20 }}
       />
 
       <Button
         variant="contained"
         endIcon={<AddCircleOutlineIcon />}
-        sx={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          margin: '10px auto 0 auto',
-        }}
+        className={css.submitButton}
         type="submit"
       >
         Add contact

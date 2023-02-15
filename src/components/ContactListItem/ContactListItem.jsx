@@ -17,21 +17,8 @@ import EditIcon from '@mui/icons-material/Edit';
 import Tooltip from '@mui/material/Tooltip';
 import css from './ContactListItem.module.scss';
 
-const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 400,
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
-  boxShadow: 24,
-  p: 4,
-};
-
 export const ContactListItem = ({ contact }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  //const [contactData, setContactData] = useState({});
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsLoading);
 
@@ -52,7 +39,7 @@ export const ContactListItem = ({ contact }) => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style}>
+        <Box className={css.modal}>
           <ContactEdit contact={contact} handleClose={handleClose} />
         </Box>
       </Modal>
