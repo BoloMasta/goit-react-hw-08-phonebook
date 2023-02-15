@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
-import { deleteContact, editContact } from '../../redux/contacts/operations';
+import { deleteContact } from '../../redux/contacts/operations';
 import { selectIsLoading } from 'redux/contacts/selectors';
 import { ContactEdit } from 'components/ContactEdit/ContactEdit';
 import Modal from '@mui/material/Modal';
@@ -53,7 +53,7 @@ export const ContactListItem = ({ contact }) => {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <ContactEdit contact={contact} />
+          <ContactEdit contact={contact} handleClose={handleClose} />
         </Box>
       </Modal>
 
