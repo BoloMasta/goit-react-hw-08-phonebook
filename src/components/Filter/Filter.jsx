@@ -21,7 +21,7 @@ export const Filter = () => {
         name="filter"
         onChange={handleChangeFilter}
         value={useSelector(selectFilter)}
-        disabled={useSelector(selectContacts).length === 0}
+        disabled={useSelector(selectContacts).length < 2}
         className={css.input}
       />
 

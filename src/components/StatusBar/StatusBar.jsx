@@ -37,14 +37,17 @@ export const StatusBar = () => {
         </Box>
       </Tooltip>
       <Filter />
+
       <Tooltip
         title={sorted.sortedAlphabetically ? 'Sort by name Z-A' : 'Sort by name A-Z'}
         placement="bottom-start"
         arrow
       >
-        <IconButton onClick={handleSortAzContacts}>
-          <SortByAlphaIcon size="large" className={css.sortIcon} />
-        </IconButton>
+        <span>
+          <IconButton onClick={handleSortAzContacts} disabled={total < 2}>
+            <SortByAlphaIcon size="large" className={css.sortIcon} />
+          </IconButton>
+        </span>
       </Tooltip>
     </Box>
   );

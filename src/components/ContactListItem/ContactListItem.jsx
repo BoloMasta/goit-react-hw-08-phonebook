@@ -26,7 +26,6 @@ export const ContactListItem = ({ contact }) => {
     dispatch(deleteContact(contact.id));
   };
   const handleOpen = () => {
-    console.log(contact);
     setIsModalOpen(true);
   };
   const handleClose = () => setIsModalOpen(false);
@@ -38,6 +37,7 @@ export const ContactListItem = ({ contact }) => {
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
+        disableScrollLock={true}
       >
         <Box className={css.modal}>
           <ContactEdit contact={contact} handleClose={handleClose} />
