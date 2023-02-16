@@ -30,14 +30,14 @@ export const ContactForm = () => {
       contact => contact.name.toLowerCase() === name.toLowerCase()
     );
     const isPhoneExist = contacts.find(
-      contact => contact.number.replace(/\s/g, '') === phone.replace(/\s/g, '')
+      contact => contact.number.replace(/[^0-9]+/g, '') === phone.replace(/[^0-9]+/g, '')
     );
     if (isContactExist) {
-      alert(`User ${event.target.elements.name.value} is already in contacts`);
+      alert(`User ${name} is already in contacts`);
       return;
     }
     if (isPhoneExist) {
-      alert(`Number ${event.target.elements.number.value} is already in contacts`);
+      alert(`Number ${phone} is already in contacts`);
       return;
     }
 

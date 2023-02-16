@@ -14,32 +14,33 @@ import css from './ContactEdit.module.scss';
 
 export const ContactEdit = ({ contact, handleClose }) => {
   const [name, setName] = useState(contact.name);
-  const [number, setNumber] = useState(contact.number);
+  const [phone, setPhone] = useState(contact.number);
   const contacts = useSelector(selectContacts);
-  const contactsWithoutCurrent = contacts.filter(item => item.id !== contact.id);
   const dispatch = useDispatch();
 
   const handleNameChange = event => {
     setName(event.target.value);
   };
   const handleNumberChange = event => {
-    setNumber(event.target.value);
+    setPhone(event.target.value);
   };
 
   const handleSubmit = event => {
     event.preventDefault();
+    const contactsWithoutCurrent = contacts.filter(item => item.id !== contact.id);
+
     const isContactExist = contactsWithoutCurrent.find(
-      contact => contact.name.toLowerCase() === event.target.elements.name.value.toLowerCase()
+      contact => contact.name.toLowerCase() === name.toLowerCase()
     );
     const isPhoneExist = contactsWithoutCurrent.find(
-      contact => contact.number === event.target.elements.number.value
+      contact => contact.number.replace(/[^0-9]+/g, '') === phone.replace(/[^0-9]+/g, '')
     );
     if (isContactExist) {
-      alert(`User ${event.target.elements.name.value} is already in contacts`);
+      alert(`User ${name} is already in contacts`);
       return;
     }
     if (isPhoneExist) {
-      alert(`Number ${event.target.elements.number.value} is already in contacts`);
+      alert(`Number ${phone} is already in contacts`);
       return;
     }
 
@@ -47,7 +48,7 @@ export const ContactEdit = ({ contact, handleClose }) => {
       editContact({
         id: contact.id,
         name,
-        number,
+        number: phone,
       })
     );
     handleClose();
@@ -83,14 +84,14 @@ export const ContactEdit = ({ contact, handleClose }) => {
         name="number"
         fullWidth
         margin="normal"
-        value={number}
+        value={phone}
         onChange={handleNumberChange}
         required
       />
       <BackspaceIcon
         className={css.backspaceIconPhone}
-        onClick={() => setNumber('')}
-        style={{ display: number.length > 0 ? 'block' : 'none' }}
+        onClick={() => setPhone('')}
+        style={{ display: phone.length > 0 ? 'block' : 'none' }}
       />
 
       <Box className={css.buttons}>
