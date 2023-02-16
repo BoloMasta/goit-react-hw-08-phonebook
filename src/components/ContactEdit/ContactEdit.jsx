@@ -7,6 +7,7 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import BackspaceIcon from '@mui/icons-material/Backspace';
 import SaveIcon from '@mui/icons-material/Save';
 import CancelIcon from '@mui/icons-material/Cancel';
 import css from './ContactEdit.module.scss';
@@ -60,6 +61,7 @@ export const ContactEdit = ({ contact, handleClose }) => {
       <Typography variant="subtitle1" component="h2">
         {contact.name}: {contact.number}
       </Typography>
+
       <TextField
         label="Name"
         variant="standard"
@@ -69,6 +71,11 @@ export const ContactEdit = ({ contact, handleClose }) => {
         value={name}
         onChange={handleNameChange}
         required
+      />
+      <BackspaceIcon
+        className={css.backspaceIconName}
+        onClick={() => setName('')}
+        style={{ display: name.length > 0 ? 'block' : 'none' }}
       />
       <TextField
         label="Number"
@@ -80,6 +87,12 @@ export const ContactEdit = ({ contact, handleClose }) => {
         onChange={handleNumberChange}
         required
       />
+      <BackspaceIcon
+        className={css.backspaceIconPhone}
+        onClick={() => setNumber('')}
+        style={{ display: number.length > 0 ? 'block' : 'none' }}
+      />
+
       <Box className={css.buttons}>
         <Button type="submit" variant="contained" color="primary">
           Save changes

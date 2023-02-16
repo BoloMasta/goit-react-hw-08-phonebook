@@ -25,7 +25,6 @@ export const ContactForm = () => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    const form = event.target;
 
     const isContactExist = contacts.find(
       contact => contact.name.toLowerCase() === name.toLowerCase()
@@ -44,12 +43,12 @@ export const ContactForm = () => {
 
     dispatch(
       addContact({
-        name: form.elements.name.value,
-        number: form.elements.number.value,
+        name,
+        number: phone,
       })
     );
 
-    form.reset();
+    setName('');
     setPhone('');
   };
 
