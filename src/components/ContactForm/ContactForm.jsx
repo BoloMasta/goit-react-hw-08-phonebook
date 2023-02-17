@@ -59,7 +59,6 @@ export const ContactForm = () => {
         variant="standard"
         name="name"
         fullWidth
-        // margin="normal"
         placeholder="Enter name"
         required
         inputProps={{ maxLength: 30 }}

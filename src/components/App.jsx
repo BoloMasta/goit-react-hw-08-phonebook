@@ -7,6 +7,7 @@ import { RestrictedRoute } from './routes/RestrictedRoute';
 import { fetchCurrentUser } from 'redux/auth/operations';
 import { useAuth } from 'hooks';
 import { routes } from './routes/routes';
+import CircularProgress from '@mui/material/CircularProgress';
 
 const HomePage = lazy(() => import('pages/Home'));
 const RegisterPage = lazy(() => import('pages/Register'));
@@ -22,7 +23,11 @@ const App = () => {
   }, [dispatch]);
 
   return isFetchingCurrentUser ? (
-    <b>Refreshing user...</b>
+    <div
+      style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}
+    >
+      <CircularProgress />
+    </div>
   ) : (
     <Routes>
       <Route path={routes.home} element={<Layout />}>
