@@ -2,8 +2,8 @@ import { lazy, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
 import { Layout } from './common/Layout';
-import { PrivateRoute } from './PrivateRoute';
-import { RestrictedRoute } from './RestrictedRoute';
+import { PrivateRoute } from './routes/PrivateRoute';
+import { RestrictedRoute } from './routes/RestrictedRoute';
 import { fetchCurrentUser } from 'redux/auth/operations';
 import { useAuth } from 'hooks';
 
