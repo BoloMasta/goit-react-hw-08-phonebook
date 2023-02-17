@@ -1,6 +1,6 @@
 import { lazy, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import { Layout } from './common/Layout';
 import { PrivateRoute } from './routes/PrivateRoute';
 import { RestrictedRoute } from './routes/RestrictedRoute';
@@ -39,6 +39,7 @@ const App = () => {
           path={routes.contacts}
           element={<PrivateRoute redirectTo={routes.login} component={<ContactsPage />} />}
         />
+        <Route path={routes.notFound} element={<Navigate to={routes.home} />} />
       </Route>
     </Routes>
   );
